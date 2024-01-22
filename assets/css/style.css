@@ -15,6 +15,36 @@
   #CUSTOM PROPERTY
 \*-----------------------------------*/
 
+body{
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1em;
+}
+
+.nabih-buttons{
+    margin: 0 4px; 
+    padding: 6px 8px;
+    width: 7rem;
+    white-space: nowrap; 
+}
+
+.container-fluid{
+    padding:0 5%;
+}
+
+/*Header Section*/
+
+#header{
+    background-color: #eee;
+}
+
+.navbar-brand{
+    font-family: 'Almarai';
+    color:#393e46;
+    font-size: 2.5rem;
+    font-weight:900;
+    margin: 0;
+}
+
 :root {
 
     /**
