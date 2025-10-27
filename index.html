@@ -1,266 +1,221 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>المبرمج مازن المولد - Programmer Mazen Al-muwallad</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmer Mazen Al-muwallad</title>
 
-  <!-- أيقونة الموقع -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
+  <!-- Fav Icon -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
-  <!-- خطوط عربية وغربية -->
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet" />
+  <!-- Bootstrap RTL for Arabic -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
 
-  <!-- Bootstrap RTL -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Tajawal:wght@200;300;400;500;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- i18next for Multi-language support -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.11/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.5/dist/umd/i18nextHttpBackend.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.2/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
 
   <style>
     body {
-      font-family: 'Almarai', 'Poppins', sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-      transition: all 0.3s ease;
+      font-family: 'Tajawal', 'Almarai', sans-serif;
+      background-color: #f7f8fa;
       overflow-x: hidden;
     }
 
-    .sidebar, .main-content {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .sidebar {
+      width: 280px;
       background-color: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      margin: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
       transition: all 0.3s ease;
-    }
-
-    .navbar {
-      background-color: #007bff;
-      border-radius: 10px;
-      padding: 10px;
-      color: #fff;
-      text-align: center;
-      position: relative;
-    }
-
-    .navbar button {
-      background: none;
-      border: none;
-      color: white;
-      font-weight: bold;
-      margin: 0 10px;
-    }
-
-    .navbar button:hover {
-      text-decoration: underline;
-    }
-
-    .avatar-box img {
-      border-radius: 50%;
-      border: 3px solid #007bff;
-    }
-
-    /* زر الوضع الليلي */
-    .dark-mode-toggle {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      padding: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .dark-mode-toggle:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* الوضع الليلي */
-    body.dark-mode {
-      background-color: #121212;
-      color: #eee;
-    }
-
-    body.dark-mode .sidebar,
-    body.dark-mode .main-content {
-      background-color: #1e1e1e;
-      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
-    }
-
-    body.dark-mode .navbar {
-      background-color: #0d6efd;
-    }
-
-    .language-switcher {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 999;
-    }
-
-    .language-switcher select {
-      padding: 5px 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
     }
 
     @media (max-width: 992px) {
-      .sidebar, .main-content {
-        margin: 5px;
-        padding: 15px;
+      .sidebar {
+        width: 100%;
+        border-radius: 0;
       }
 
-      .navbar button {
-        display: block;
-        margin: 8px auto;
+      .main-content {
+        margin-top: 20px;
       }
+
+      nav.navbar ul.navbar-list {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav.navbar ul.navbar-list li {
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      h1.name {
+        font-size: 1.3rem;
+      }
+
+      .service-item, .skills-item {
+        text-align: center;
+      }
+
+      .sidebar-info_more {
+        padding: 10px;
+      }
+    }
+
+    /* زر تغيير اللغة */
+    .lang-switcher {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      background-color: #f1f1f1;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .lang-switcher:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <!-- Sidebar -->
-      <aside class="col-lg-3 col-md-4 sidebar text-center">
-        <figure class="avatar-box mb-3">
-          <img src="./assets/images/my-avatar.png" alt="Mazen" width="100">
+
+  <button class="lang-switcher" id="langBtn">🌐 English</button>
+
+  <main>
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Mazen Al-muwallad" width="80">
         </figure>
-        <h3>مازن المولد</h3>
-        <p>مبرمج ومطور مواقع</p>
-        <hr />
-        <ul class="list-unstyled text-start">
-          <li><i class="fa fa-envelope"></i> <a href="mailto:webmazen4@gmail.com">webmazen4@gmail.com</a></li>
-          <li><i class="fa fa-phone"></i> <a href="tel:+966592732727">+966 59 273 2727</a></li>
-          <li><i class="fa fa-map-marker"></i> المدينة المنورة، السعودية</li>
-        </ul>
-        <div class="mt-3">
-          <a href="https://www.linkedin.com/in/mazen-almuwallad-7924a72a3" target="_blank"><i class="fab fa-linkedin fa-2x mx-1"></i></a>
-          <a href="https://wa.me/+966596030154" target="_blank"><i class="fab fa-whatsapp fa-2x mx-1 text-success"></i></a>
-          <a href="https://www.snapchat.com/add/l66_4" target="_blank"><i class="fab fa-snapchat fa-2x mx-1 text-warning"></i></a>
-        </div>
-      </aside>
-
-      <!-- Main Content -->
-      <div class="col-lg-9 col-md-8 main-content">
-        <nav class="navbar">
-          <button class="dark-mode-toggle" title="تبديل الوضع الليلي">
-            <i class="fa fa-moon"></i>
+        <div class="info-content">
+          <h1 class="name" title="Mazen Nasser Mansour Al-muwallad">Mazen Al-muwallad</h1>
+          <p class="title">Programmer and Web Developer</p>
+          <button class="info_more-btn" data-sidebar-btn>
+            <span>Show Contacts</span>
+            <ion-icon name="chevron-down"></ion-icon>
           </button>
-          <button data-section="about">عنّي</button>
-          <button data-section="resume">السيرة الذاتية</button>
-          <button data-section="portfolio">الأعمال</button>
-        </nav>
+        </div>
 
-        <section id="about" class="content-section">
-          <h2>عنّي</h2>
-          <p>
-            أنا المبرمج والمصمم مازن المولد من المملكة العربية السعودية. أهوى البرمجة وتطوير المواقع والتطبيقات الحديثة.
-          </p>
-        </section>
+        <div class="sidebar-info_more">
+          <div class="separator"></div>
+          <ul class="contacts-list">
+            <li class="contact-item">
+              <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
+                <a href="mailto:webmazen4@gmail.com" class="contact-link">webmazen4@gmail.com</a>
+              </div>
+            </li>
 
-        <section id="resume" class="content-section d-none">
-          <h2>السيرة الذاتية</h2>
-          <p>خريج الكلية التقنية - قسم تقنية البرمجيات وتطوير الويب.</p>
-        </section>
+            <li class="contact-item">
+              <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+              <div class="contact-info">
+                <p class="contact-title">Phone</p>
+                <a href="tel:+966592732727" class="contact-link">+966 59 273 2727</a>
+              </div>
+            </li>
 
-        <section id="portfolio" class="content-section d-none">
-          <h2>الأعمال</h2>
-          <p>سيتم عرض الأعمال قريبًا...</p>
-        </section>
+            <li class="contact-item">
+              <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
+              <div class="contact-info">
+                <p class="contact-title">Birthday</p>
+                <time datetime="2003-02-02">Feb 02, 2003</time>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+              <div class="contact-info">
+                <p class="contact-title">Location</p>
+                <address>Saudi Arabia, Al Madinah Al Munawwarah</address>
+              </div>
+            </li>
+          </ul>
+
+          <div class="separator"></div>
+
+          <ul class="social-list">
+            <li class="social-item"><a href="https://www.linkedin.com/in/mazen-almuwallad-7924a72a3" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li class="social-item"><a href="https://wa.me/+966596030154" class="social-link"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+            <li class="social-item"><a href="https://www.snapchat.com/add/l66_4" class="social-link"><ion-icon name="logo-snapchat"></ion-icon></a></li>
+          </ul>
+        </div>
       </div>
+    </aside>
+
+    <div class="main-content container-fluid">
+      <nav class="navbar d-flex justify-content-center mt-3">
+        <ul class="navbar-list d-flex flex-wrap justify-content-center gap-3">
+          <li class="navbar-item"><button class="navbar-link active" data-nav-link>About</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link>Resume</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link>Portfolio</button></li>
+        </ul>
+      </nav>
+
+      <!-- يمكنك وضع باقي المحتوى هنا بدون تعديل -->
+      <section class="about active mt-4 text-center">
+        <header>
+          <h2 class="h2 article-title">About Me</h2>
+        </header>
+        <p class="px-3">
+          I am a creative programmer and UI/UX designer from Saudi Arabia. I enjoy transforming complex problems
+          into simple and beautiful web experiences.
+        </p>
+      </section>
     </div>
-  </div>
+  </main>
 
-  <!-- مبدل اللغة -->
-  <div class="language-switcher">
-    <select id="languageSelect">
-      <option value="ar" selected>العربية</option>
-      <option value="en">English</option>
-    </select>
-  </div>
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-  <!-- JavaScript -->
   <script>
-    // تبديل الأقسام
-    document.querySelectorAll('.navbar button[data-section]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('d-none'));
-        document.getElementById(btn.dataset.section).classList.remove('d-none');
+    // إعداد التعدد اللغوي
+    i18next
+      .use(i18nextHttpBackend)
+      .use(i18nextBrowserLanguageDetector)
+      .init({
+        fallbackLng: 'ar',
+        debug: false,
+        backend: { loadPath: './locales/{{lng}}.json' }
       });
+
+    // زر التبديل بين العربية والإنجليزية
+    const langBtn = document.getElementById('langBtn');
+    langBtn.addEventListener('click', () => {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.documentElement.lang = newLang;
+      document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+      langBtn.textContent = newLang === 'ar' ? '🌐 English' : '🌐 العربية';
     });
-
-    // تعدد اللغات
-    const langSelect = document.getElementById('languageSelect');
-    langSelect.addEventListener('change', (e) => {
-      const lang = e.target.value;
-      document.documentElement.lang = lang;
-
-      if (lang === 'ar') {
-        document.documentElement.dir = 'rtl';
-        document.body.style.fontFamily = "'Almarai', sans-serif";
-      } else {
-        document.documentElement.dir = 'ltr';
-        document.body.style.fontFamily = "'Poppins', sans-serif";
-      }
-
-      updateTexts(lang);
-      localStorage.setItem("preferredLang", lang);
-    });
-
-    // الوضع الليلي
-    const darkToggle = document.querySelector('.dark-mode-toggle');
-    const icon = darkToggle.querySelector('i');
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      document.body.classList.add('dark-mode');
-      icon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const darkModeEnabled = document.body.classList.contains('dark-mode');
-      icon.classList.toggle('fa-sun', darkModeEnabled);
-      icon.classList.toggle('fa-moon', !darkModeEnabled);
-      localStorage.setItem('theme', darkModeEnabled ? 'dark' : 'light');
-    });
-
-    // تحميل اللغة المحفوظة
-    const savedLang = localStorage.getItem("preferredLang") || "ar";
-    langSelect.value = savedLang;
-    updateTexts(savedLang);
-    document.documentElement.lang = savedLang;
-    document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
-
-    function updateTexts(lang) {
-      if (lang === 'en') {
-        document.querySelector('.navbar button[data-section="about"]').textContent = 'About';
-        document.querySelector('.navbar button[data-section="resume"]').textContent = 'Resume';
-        document.querySelector('.navbar button[data-section="portfolio"]').textContent = 'Portfolio';
-        document.querySelector('#about h2').textContent = 'About Me';
-        document.querySelector('#about p').textContent = 'I am Mazen Al-Muwallad, a programmer and web developer from Saudi Arabia.';
-        document.querySelector('#resume h2').textContent = 'Resume';
-        document.querySelector('#resume p').textContent = 'Graduated from Technical College, Software Development Department.';
-        document.querySelector('#portfolio h2').textContent = 'Portfolio';
-        document.querySelector('#portfolio p').textContent = 'Projects will be displayed soon...';
-      } else {
-        document.querySelector('.navbar button[data-section="about"]').textContent = 'عنّي';
-        document.querySelector('.navbar button[data-section="resume"]').textContent = 'السيرة الذاتية';
-        document.querySelector('.navbar button[data-section="portfolio"]').textContent = 'الأعمال';
-        document.querySelector('#about h2').textContent = 'عنّي';
-        document.querySelector('#about p').textContent = 'أنا المبرمج والمصمم مازن المولد من المملكة العربية السعودية. أهوى البرمجة وتطوير المواقع والتطبيقات الحديثة.';
-        document.querySelector('#resume h2').textContent = 'السيرة الذاتية';
-        document.querySelector('#resume p').textContent = 'خريج الكلية التقنية - قسم تقنية البرمجيات وتطوير الويب.';
-        document.querySelector('#portfolio h2').textContent = 'الأعمال';
-        document.querySelector('#portfolio p').textContent = 'سيتم عرض الأعمال قريبًا...';
-      }
-    }
   </script>
 </body>
 </html>
