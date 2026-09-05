@@ -71,8 +71,11 @@
 <div class="main-container">
     <div class="top-controls">
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span class="xp-badge"><i class="fa-solid fa-trophy"></i> XP: <span id="xp-count">0</span></span>
             <select id="age-selector" class="control-btn">
-          
+                <option value="young">وضع الشباب</option>
+                <option value="adult" selected>وضع المتخصصين</option>
+                <option value="senior">الوضع الهادئ</option>
             </select>
         </div>
         <div class="controls-btns">
@@ -231,7 +234,11 @@
             themeBtn.querySelector('i').className = next === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         });
 
-      
+        // XP عداد بسيط (اختياري)
+        window.addXP = function(p) {
+            const el = document.getElementById('xp-count');
+            if(el) el.innerText = parseInt(el.innerText || '0') + p;
+        };
 
         // Portfolio filter
         window.filterPortfolio = function(cat, btn) {
