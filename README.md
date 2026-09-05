@@ -56,4 +56,5 @@ https://mazin9990.github.io/mazenweb/
  * البريد الإلكتروني: webmazen4@gmail.com
  * الهاتف: +966 59 603 0154
 📜 الترخيص
+
 هذا المشروع مرخص بموجب رخصة MIT License.
