@@ -234,11 +234,7 @@
             themeBtn.querySelector('i').className = next === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         });
 
-        // XP عداد بسيط (اختياري)
-        window.addXP = function(p) {
-            const el = document.getElementById('xp-count');
-            if(el) el.innerText = parseInt(el.innerText || '0') + p;
-        };
+   
 
         // Portfolio filter
         window.filterPortfolio = function(cat, btn) {
