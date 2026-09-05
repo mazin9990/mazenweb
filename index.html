@@ -6,14 +6,11 @@
     <title id="site-title">الموقع الشخصي لمشاريع مازن المولد</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <!-- React & Babel -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- html2pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
@@ -213,7 +210,7 @@
                 </div>
             </article>
 
-            <!-- صفحة السيرة الذاتية الذكية ATS -->
+           
             <article data-page="ats">
                 <div id="ats-root"></div>
             </article>
@@ -232,7 +229,6 @@
 </div>
 
 <script>
-    // قاموس الترجمات الشامل لكافة أجزاء الموقع
     const siteI18n = {
         ar: {
             siteTitle: "الموقع الشخصي لمشاريع مازن المولد",
@@ -390,23 +386,21 @@
         document.getElementById('site-title').innerText = dict.siteTitle;
         document.getElementById('lang-toggle').innerText = lang === 'ar' ? 'EN' : 'عربي';
 
-        // تحديث كل العناصر ذات المعرف data-i18n
+
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if(dict[key]) el.innerText = dict[key];
         });
 
-        // Placeholders
+   
         document.getElementById('input-name').placeholder = dict.inputNameHolder;
         document.getElementById('input-email').placeholder = dict.inputEmailHolder;
         document.getElementById('input-msg').placeholder = dict.inputMsgHolder;
 
-        // إرسال تنبيه لتطبيق React المدمج بالسيرة الذاتية الذكية
         window.dispatchEvent(new CustomEvent('siteLangChange', { detail: lang }));
     }
 
     (function() {
-        // Nav Links
         const navLinks = document.querySelectorAll('.navbar-link');
         const pages = document.querySelectorAll('article[data-page]');
         navLinks.forEach(link => {
@@ -420,7 +414,6 @@
             });
         });
 
-        // Theme Toggle
         const themeBtn = document.getElementById('theme-toggle');
         const savedTheme = localStorage.getItem('site_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -434,14 +427,12 @@
             themeBtn.querySelector('i').className = next === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         });
 
-        // Language Toggle Main
         const langBtn = document.getElementById('lang-toggle');
         langBtn.addEventListener('click', () => {
             const newLang = currentSiteLang === 'ar' ? 'en' : 'ar';
             updateSiteLanguage(newLang);
         });
 
-        // Portfolio Filter
         window.filterPortfolio = function(cat, btn) {
             document.querySelectorAll('.portfolio-item').forEach(item => {
                 item.classList.toggle('hide', cat !== 'all' && item.getAttribute('data-category') !== cat);
@@ -450,7 +441,6 @@
             if(btn) btn.classList.add('active');
         };
 
-        // Form Auto-save & Submit
         const contactInputs = ['input-name', 'input-email', 'input-msg'];
         contactInputs.forEach(id => {
             const el = document.getElementById(id);
@@ -469,12 +459,10 @@
             contactInputs.forEach(id => localStorage.removeItem(`contact_${id}`));
         });
 
-        // تطبيق اللغة الابتدائية عند التشغيل
         updateSiteLanguage(currentSiteLang);
     })();
 </script>
 
-<!-- React Application Script -->
 <script type="text/babel">
     const { useState, useEffect } = React;
 
@@ -534,7 +522,6 @@
         const [selectedFont, setSelectedFont] = useState('font-cairo');
         const [fontSize, setFontSize] = useState('text-xs');
 
-        // جلب البيانات المخزنة تلقائياً
         const [formData, setFormData] = useState(() => {
             const savedData = localStorage.getItem(`ats_formData_${lang}`);
             if (savedData) {
@@ -543,7 +530,6 @@
             return lang === 'ar' ? defaultFormDataAr : defaultFormDataEn;
         });
 
-        // حفظ تلقائي فوري مع أي تغيير للبيانات
         useEffect(() => {
             localStorage.setItem(`ats_formData_${lang}`, JSON.stringify(formData));
         }, [formData, lang]);
@@ -596,7 +582,6 @@
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                    {/* لوحة تحكم السيرة الذاتية */}
                     <div className="lg:col-span-5 space-y-2">
                         <div className="flex overflow-x-auto gap-1 pb-1">
                             {[{id:'personal',label:t.personalTab,icon:'fa-user'},{id:'exp',label:t.expTab,icon:'fa-briefcase'},{id:'projects',label:t.projectsTab,icon:'fa-code'},{id:'more',label:t.moreTab,icon:'fa-star'},{id:'extra',label:t.extraTab,icon:'fa-award'},{id:'design',label:t.designTab,icon:'fa-palette'}].map(tab=>(
@@ -652,7 +637,6 @@
                         )}
                     </div>
 
-                    {/* معاينة A4 */}
                     <div className="lg:col-span-7 overflow-x-auto">
                         <div id="resume-preview" className={`a4-paper bg-white text-slate-800 ${selectedFont} ${fontSize}`}>
                             <div className="text-center border-b pb-3 mb-4">
