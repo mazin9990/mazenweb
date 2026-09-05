@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
-    <title>مازن المولد | السيرة الذاتية الذكية ATS</title>
+    <title id="site-title">مازن المولد | السيرة الذاتية الذكية ATS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind (مستخدم في واجهة السيرة الذاتية) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <!-- React و Babel للسيرة الذاتية -->
+    <!-- React & Babel -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -49,21 +49,29 @@
         .navbar-link.active, .navbar-link:hover { color: var(--accent); font-weight: bold; background: var(--bg-primary); }
         article[data-page] { display: none; } article[data-page].active { display: block; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-        .article-title { font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 8px; position: relative; } .article-title::after { content: ""; position: absolute; bottom: 0; right: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 3px; }
+        .article-title { font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 8px; position: relative; } 
+        html[dir="rtl"] .article-title::after { content: ""; position: absolute; bottom: 0; right: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 3px; }
+        html[dir="ltr"] .article-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 3px; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
         .card { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; transition: 0.3s; } .card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 20px var(--accent-glow); }
         .card-icon { font-size: 2rem; color: var(--accent); margin-bottom: 10px; }
         .testimonials-list { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; margin-top: 15px; } .testimonial-item { min-width: 280px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; font-size: 0.85rem; }
-        .timeline { border-right: 2px solid var(--border-color); padding-right: 20px; margin-top: 20px; } .timeline-item { position: relative; margin-bottom: 20px; } .timeline-item::after { content: ""; position: absolute; top: 5px; right: -26px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+        
+        html[dir="rtl"] .timeline { border-right: 2px solid var(--border-color); padding-right: 20px; margin-top: 20px; }
+        html[dir="rtl"] .timeline-item { position: relative; margin-bottom: 20px; } 
+        html[dir="rtl"] .timeline-item::after { content: ""; position: absolute; top: 5px; right: -26px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+
+        html[dir="ltr"] .timeline { border-left: 2px solid var(--border-color); padding-left: 20px; margin-top: 20px; }
+        html[dir="ltr"] .timeline-item { position: relative; margin-bottom: 20px; } 
+        html[dir="ltr"] .timeline-item::after { content: ""; position: absolute; top: 5px; left: -26px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+
         .skill-progress-bg { background: var(--border-color); height: 8px; border-radius: 4px; overflow: hidden; margin-top: 5px; } .skill-progress-fill { background: var(--accent); height: 100%; border-radius: 4px; }
         .filter-buttons { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; } .filter-btn { background: var(--bg-primary); color: var(--text-secondary); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; min-height: 38px; transition: 0.25s; } .filter-btn.active { color: var(--accent); border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; } .portfolio-item.hide { display: none; }
         .form-input { width: 100%; padding: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 8px; margin-bottom: 15px; font-family: var(--font-family); font-size: 0.9rem; } .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
         .form-btn { background: var(--accent); color: #000; font-weight: bold; border: none; padding: 14px 24px; border-radius: 10px; font-size: 1rem; min-height: 48px; transition: 0.25s; } .form-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
-        .touch-hint { display: inline-block; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; padding: 2px 8px; font-size: 0.7rem; color: var(--text-secondary); margin-right: 5px; }
         @media (min-width: 992px) { .layout-wrapper { flex-direction: row; } .sidebar { width: 320px; position: sticky; top: 75px; height: fit-content; } .main-content { flex: 1; } }
         @media (max-width: 600px) { .sidebar, .main-content { padding: 15px; border-radius: 14px; } .navbar-link { font-size: 0.75rem; padding: 6px 10px; min-height: 34px; } }
-        /* أنماط خاصة بصفحة السيرة الذاتية */
         .a4-paper { width: 210mm; min-height: 297mm; padding: 15mm; margin: auto; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
     </style>
 </head>
@@ -73,9 +81,9 @@
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <span class="xp-badge"><i class="fa-solid fa-trophy"></i> XP: <span id="xp-count">0</span></span>
             <select id="age-selector" class="control-btn">
-                <option value="young">وضع الشباب</option>
-                <option value="adult" selected>وضع المتخصصين</option>
-                <option value="senior">الوضع الهادئ</option>
+                <option value="young" data-i18n="modeYoung">وضع الشباب</option>
+                <option value="adult" selected data-i18n="modeAdult">وضع المتخصصين</option>
+                <option value="senior" data-i18n="modeSenior">الوضع الهادئ</option>
             </select>
         </div>
         <div class="controls-btns">
@@ -88,75 +96,89 @@
         <aside class="sidebar">
             <div class="avatar-box"><i class="fa-solid fa-user-ninja"></i></div>
             <div class="info-content">
-                <h1>مازن الناصر منصور المولد</h1>
-                <p class="title">مبرمج ومطور ويب & مدير إبداعي</p>
+                <h1 data-i18n="profileName">مازن الناصر منصور المولد</h1>
+                <p class="title" data-i18n="profileTitle">مبرمج ومطور ويب & مدير إبداعي</p>
             </div>
             <div class="contacts-list">
-                <div class="contact-item"><i class="fa-solid fa-envelope contact-icon"></i><div><p style="color:var(--text-secondary); font-size:0.75rem;">البريد الإلكتروني</p><span>webmazen4@gmail.com</span></div></div>
-                <div class="contact-item"><i class="fa-solid fa-phone contact-icon"></i><div><p style="color:var(--text-secondary); font-size:0.75rem;">الهاتف</p><span dir="ltr">+966 59 603 0154</span></div></div>
-                <div class="contact-item"><i class="fa-solid fa-cake-candles contact-icon"></i><div><p style="color:var(--text-secondary); font-size:0.75rem;">تاريخ الميلاد</p><span>2 فبراير 2003</span></div></div>
-                <div class="contact-item"><i class="fa-solid fa-location-dot contact-icon"></i><div><p style="color:var(--text-secondary); font-size:0.75rem;">الموقع</p><span>المملكة العربية السعودية، المدينة المنورة / رابغ</span></div></div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope contact-icon"></i>
+                    <div>
+                        <p style="color:var(--text-secondary); font-size:0.75rem;" data-i18n="labelEmail">البريد الإلكتروني</p>
+                        <span>webmazen4@gmail.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone contact-icon"></i>
+                    <div>
+                        <p style="color:var(--text-secondary); font-size:0.75rem;" data-i18n="labelPhone">الهاتف</p>
+                        <span dir="ltr">+966 59 603 0154</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-cake-candles contact-icon"></i>
+                    <div>
+                        <p style="color:var(--text-secondary); font-size:0.75rem;" data-i18n="labelBirth">تاريخ الميلاد</p>
+                        <span data-i18n="valBirth">2 فبراير 2003</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot contact-icon"></i>
+                    <div>
+                        <p style="color:var(--text-secondary); font-size:0.75rem;" data-i18n="labelLocation">الموقع</p>
+                        <span data-i18n="valLocation">المملكة العربية السعودية، المدينة المنورة / رابغ</span>
+                    </div>
+                </div>
             </div>
         </aside>
 
         <main class="main-content">
             <nav>
                 <ul class="navbar-list">
-                    <li><button class="navbar-link active" data-nav-link="about">عني</button></li>
-                    <li><button class="navbar-link" data-nav-link="resume">السيرة الذاتية</button></li>
-                    <li><button class="navbar-link" data-nav-link="portfolio">الأعمال</button></li>
-                    <li><button class="navbar-link" data-nav-link="blog">المدونة</button></li>
-                    <li><button class="navbar-link" data-nav-link="ats">📄 السيرة الذكية ATS</button></li>
-                    <li><button class="navbar-link" data-nav-link="contact">تواصل معي</button></li>
+                    <li><button class="navbar-link active" data-nav-link="about" data-i18n="navAbout">عني</button></li>
+                    <li><button class="navbar-link" data-nav-link="resume" data-i18n="navResume">السيرة الذاتية</button></li>
+                    <li><button class="navbar-link" data-nav-link="portfolio" data-i18n="navPortfolio">الأعمال</button></li>
+                    <li><button class="navbar-link" data-nav-link="blog" data-i18n="navBlog">المدونة</button></li>
+                    <li><button class="navbar-link" data-nav-link="ats" data-i18n="navAts">📄 السيرة الذكية ATS</button></li>
+                    <li><button class="navbar-link" data-nav-link="contact" data-i18n="navContact">تواصل معي</button></li>
                 </ul>
             </nav>
 
             <article data-page="about" class="active">
-                <h2 class="article-title">نبذة عني</h2>
-                <p>أنا مدير إبداعي ومصمم واجهات مستخدم (UI/UX) ومبرمج من المملكة العربية السعودية (المدينة المنورة / رابغ). أستمتع بتحويل المشاكل المعقدة إلى تصميمات بسيطة وجميلة ومبتكرة.</p>
-                <h3 style="margin-top:25px;">ماذا أقدم</h3>
+                <h2 class="article-title" data-i18n="aboutTitle">نبذة عني</h2>
+                <p data-i18n="aboutBio">أنا مدير إبداعي ومصمم واجهات مستخدم (UI/UX) ومبرمج من المملكة العربية السعودية (المدينة المنورة / رابغ). أستمتع بتحويل المشاكل المعقدة إلى تصميمات بسيطة وجميلة ومبتكرة.</p>
+                <h3 style="margin-top:25px;" data-i18n="servicesTitle">ماذا أقدم</h3>
                 <div class="grid-2">
-                    <div class="card"><i class="fa-solid fa-pen-ruler card-icon"></i><h4>تصميم الويب</h4><p style="font-size:0.85rem;color:var(--text-secondary);">تصميم حديث وعالي الجودة يتم إنجازه بمستوى احترافي.</p></div>
-                    <div class="card"><i class="fa-solid fa-code card-icon"></i><h4>تطوير الويب</h4><p style="font-size:0.85rem;color:var(--text-secondary);">تطوير موقع إلكتروني احترافي وسريع ومتجاوب.</p></div>
-                    <div class="card"><i class="fa-solid fa-mobile-screen card-icon"></i><h4>تطبيقات الجوال</h4><p style="font-size:0.85rem;color:var(--text-secondary);">تطوير احترافي لتطبيقات أندرويد الذكية.</p></div>
+                    <div class="card"><i class="fa-solid fa-pen-ruler card-icon"></i><h4 data-i18n="serv1Title">تصميم الويب</h4><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="serv1Desc">تصميم حديث وعالي الجودة يتم إنجازه بمستوى احترافي.</p></div>
+                    <div class="card"><i class="fa-solid fa-code card-icon"></i><h4 data-i18n="serv2Title">تطوير الويب</h4><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="serv2Desc">تطوير موقع إلكتروني احترافي وسريع ومتجاوب.</p></div>
+                    <div class="card"><i class="fa-solid fa-mobile-screen card-icon"></i><h4 data-i18n="serv3Title">تطبيقات الجوال</h4><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="serv3Desc">تطوير احترافي لتطبيقات أندرويد الذكية.</p></div>
                 </div>
-                <h3 style="margin-top:25px;">التوصيات والشهادات</h3>
+                <h3 style="margin-top:25px;" data-i18n="testimonialsTitle">التوصيات والشهادات</h3>
                 <div class="testimonials-list">
-                    <div class="testimonial-item"><strong>الكلية التقنية بالمدينة المنورة</strong><p style="margin-top:5px;color:var(--text-secondary);">تم حل مشكلة في خدمات المتدربين بإنشاء موقع يسهل تقديم الطلبات والرد السريع عليها من قِبل الإدارة خلال فترة مشروع التخرج عام 2023.</p></div>
-                    <div class="testimonial-item"><strong>نورة فهد النفيسة</strong><p style="margin-top:5px;color:var(--text-secondary);">تم التعاقد مع مازن لإنشاء الهوية المؤسسية للشركة. سُعدنا جداً بالعمل المنجز، يمتلك خبرة كبيرة واهتماماً عميقاً باحتياجات العميل.</p></div>
+                    <div class="testimonial-item"><strong data-i18n="test1Name">الكلية التقنية بالمدينة المنورة</strong><p style="margin-top:5px;color:var(--text-secondary);" data-i18n="test1Desc">تم حل مشكلة في خدمات المتدربين بإنشاء موقع يسهل تقديم الطلبات والرد السريع عليها من قِبل الإدارة خلال فترة مشروع التخرج عام 2023.</p></div>
+                    <div class="testimonial-item"><strong data-i18n="test2Name">نورة فهد النفيسة</strong><p style="margin-top:5px;color:var(--text-secondary);" data-i18n="test2Desc">تم التعاقد مع مازن لإنشاء الهوية المؤسسية للشركة. سُعدنا جداً بالعمل المنجز، يمتلك خبرة كبيرة واهتماماً عميقاً بااحتياجات العميل.</p></div>
                 </div>
             </article>
 
             <article data-page="resume">
-                <h2 class="article-title">السيرة الذاتية</h2>
-                <h3>التعليم</h3>
+                <h2 class="article-title" data-i18n="resumeTitle">السيرة الذاتية</h2>
+                <h3 data-i18n="eduHeader">التعليم</h3>
                 <div class="timeline">
-                    <div class="timeline-item"><h4>الكلية التقنية بالمدينة المنورة</h4><small style="color:var(--accent);">2020 — 2023</small><p style="font-size:0.85rem;color:var(--text-secondary);">حاصل على الشهادة الجامعية المتوسطة - قسم الحاسب وتقنية المعلومات (تخصص تقنية البرمجيات وتطوير الويب).</p></div>
-                    <div class="timeline-item"><h4>المعهد الثانوي الصناعي</h4><small style="color:var(--accent);">2017 — 2020</small><p style="font-size:0.85rem;color:var(--text-secondary);">حاصل على دبلوم المعهد الثانوي الصناعي - القسم الميكانيكي (تخصص تشغيل آلات الإنتاج).</p></div>
+                    <div class="timeline-item"><h4 data-i18n="edu1Title">الكلية التقنية بالمدينة المنورة</h4><small style="color:var(--accent);">2020 — 2023</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="edu1Desc">حاصل على الشهادة الجامعية المتوسطة - قسم الحاسب وتقنية المعلومات (تخصص تقنية البرمجيات وتطوير الويب).</p></div>
+                    <div class="timeline-item"><h4 data-i18n="edu2Title">المعهد الثانوي الصناعي</h4><small style="color:var(--accent);">2017 — 2020</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="edu2Desc">حاصل على دبلوم المعهد الثانوي الصناعي - القسم الميكانيكي (تخصص تشغيل آلات الإنتاج).</p></div>
                 </div>
-                <h3 style="margin-top:20px;">الدورات التدريبية</h3>
-                <div class="timeline"><div class="timeline-item"><h4>أمن نظم المعلومات والتشفير</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);">دورة متخصصة في مجال أمن المعلومات والتشفير الاستفادة منها كانت كبيرة وممتعة جداً.</p></div></div>
-                <div class="timeline"><div class="timeline-item"><h4>امن المعلومات</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);">دورة متخصصة في مجال امن المعلومات الاستفادة منها كانت كبيرة وممتعة جداً.</p></div></div>
-                <div class="timeline"><div class="timeline-item"><h4>أمن الحوسبة</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);">دورة متخصصة في مجال  أمن الحوسبة منها كانت كبيرة وممتعة جداً.</p></div></div>
-                <div class="timeline"><div class="timeline-item"><h4> إدارة مشاريع تقنية المعلومات </h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);">دورة متخصصة في مجال إدارة مشاريع تقنية المعلومات  الاستفادة منها كانت كبيرة وممتعة جداً.</p></div></div>
-                <h3 style="margin-top:20px;">الخبرات </h3>
-                <div class="timeline"><div class="timeline-item"><h4> سائق رافعة شوكية  </h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);">
-                    في شركة رابغ لإدارة عمليات الأمداد البتروكيماويات RPL 
-                    تشغيل الرافعة لنقل و التحميل و تنزيل المواد داخل المستودع او موقع العمل 
-ترتيب المواد في موقعها وفق التعليمات 
-نقل المواد من و الى مناطق التحميل و التفريغ 
-استخدام معدات الرفع حسب نوع الحمولة و وزنها 
-
-                </p></div></div>
-                <div class="timeline"><div class="timeline-item"><h4>مشغل الات  </h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);">
-                    في شركة رابغ لإدارة عمليات الأمداد البتروكيماويات RPL
-                    تشغيل الالة و ضبط اعداداتها حسب نوع المنتج 
-تغذية الماكينة بالمواد سواء كانت رول بلاستيك او مواد الختم ( الطباعة )
-تشغيل وحدات السحب و القطع حسب مواصفات المنتج 
-عزل المنتجات المعيبة و ابلاغ المشرف 
-
-                </p></div></div>
-                <h3 style="margin-top:25px;">المهارات</h3>
+                <h3 style="margin-top:20px;" data-i18n="coursesHeader">الدورات التدريبية</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><h4 data-i18n="course1Title">أمن نظم المعلومات والتشفير</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="course1Desc">دورة متخصصة في مجال أمن المعلومات والتشفير الاستفادة منها كانت كبيرة وممتعة جداً.</p></div>
+                    <div class="timeline-item"><h4 data-i18n="course2Title">أمن المعلومات</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="course2Desc">دورة متخصصة في مجال أمن المعلومات الاستفادة منها كانت كبيرة وممتعة جداً.</p></div>
+                    <div class="timeline-item"><h4 data-i18n="course3Title">أمن الحوسبة</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="course3Desc">دورة متخصصة في مجال أمن الحوسبة منها كانت كبيرة وممتعة جداً.</p></div>
+                    <div class="timeline-item"><h4 data-i18n="course4Title">إدارة مشاريع تقنية المعلومات</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="course4Desc">دورة متخصصة في مجال إدارة مشاريع تقنية المعلومات الاستفادة منها كانت كبيرة وممتعة جداً.</p></div>
+                </div>
+                <h3 style="margin-top:20px;" data-i18n="expHeader">الخبرات</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><h4 data-i18n="exp1Title">سائق رافعة شوكية</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="exp1Desc">في شركة رابغ لإدارة عمليات الأمداد البتروكيماويات RPL. تشغيل الرافعة لنقل والتحميل وتنزيل المواد داخل المستودع أو موقع العمل، ترتيب المواد وفق التعليمات، نقل المواد من وإلى مناطق التحميل والتفريغ، واستخدام معدات الرفع حسب الوزن.</p></div>
+                    <div class="timeline-item"><h4 data-i18n="exp2Title">مشغل آلات</h4><small style="color:var(--accent);">2024</small><p style="font-size:0.85rem;color:var(--text-secondary);" data-i18n="exp2Desc">في شركة رابغ لإدارة عمليات الأمداد البتروكيماويات RPL. تشغيل الآلة وضبط إعداداتها، تغذية الماكينة بالمواد ورول البلاستيك ومواد الطباعة، تشغيل وحدات السحب والقطع، وعزل المنتجات المعيبة.</p></div>
+                </div>
+                <h3 style="margin-top:25px;" data-i18n="skillsHeader">المهارات</h3>
                 <div class="grid-2">
                     <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span>Web Design</span><span>100%</span></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:100%"></div></div></div>
                     <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span>Teamwork</span><span>100%</span></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:100%"></div></div></div>
@@ -166,28 +188,28 @@
             </article>
 
             <article data-page="portfolio">
-                <h2 class="article-title">معرض الأعمال</h2>
+                <h2 class="article-title" data-i18n="portfolioTitle">معرض الأعمال</h2>
                 <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="filterPortfolio('all', this)">الكل</button>
-                    <button class="filter-btn" onclick="filterPortfolio('web-design', this)">تصميم ويب</button>
-                    <button class="filter-btn" onclick="filterPortfolio('web-dev', this)">تطوير ويب</button>
-                    <button class="filter-btn" onclick="filterPortfolio('app', this)">تطبيقات</button>
+                    <button class="filter-btn active" onclick="filterPortfolio('all', this)" data-i18n="filterAll">الكل</button>
+                    <button class="filter-btn" onclick="filterPortfolio('web-design', this)" data-i18n="filterWebDesign">تصميم ويب</button>
+                    <button class="filter-btn" onclick="filterPortfolio('web-dev', this)" data-i18n="filterWebDev">تطوير ويب</button>
+                    <button class="filter-btn" onclick="filterPortfolio('app', this)" data-i18n="filterApps">تطبيقات</button>
                 </div>
                 <div class="portfolio-grid">
-                    <div class="card portfolio-item" data-category="web-dev"><i class="fa-solid fa-chart-line card-icon"></i><h4>Finance</h4><small>تطوير ويب</small></div>
-                    <div class="card portfolio-item" data-category="web-dev"><i class="fa-solid fa-globe card-icon"></i><h4>Orizon</h4><small>تطوير ويب</small></div>
-                    <div class="card portfolio-item" data-category="web-design"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i><h4>Fundo</h4><small>تصميم ويب</small></div>
-                    <div class="card portfolio-item" data-category="app"><i class="fa-solid fa-gamepad card-icon"></i><h4>Brawlhalla</h4><small>تطبيقات</small></div>
-                    <div class="card portfolio-item" data-category="web-design"><i class="fa-solid fa-layer-group card-icon"></i><h4>MetaSpark</h4><small>تصميم ويب</small></div>
-                    <div class="card portfolio-item" data-category="app"><i class="fa-solid fa-list-check card-icon"></i><h4>Task Manager</h4><small>تطبيقات</small></div>
+                    <div class="card portfolio-item" data-category="web-dev"><i class="fa-solid fa-chart-line card-icon"></i><h4>Finance</h4><small data-i18n="filterWebDev">تطوير ويب</small></div>
+                    <div class="card portfolio-item" data-category="web-dev"><i class="fa-solid fa-globe card-icon"></i><h4>Orizon</h4><small data-i18n="filterWebDev">تطوير ويب</small></div>
+                    <div class="card portfolio-item" data-category="web-design"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i><h4>Fundo</h4><small data-i18n="filterWebDesign">تصميم ويب</small></div>
+                    <div class="card portfolio-item" data-category="app"><i class="fa-solid fa-gamepad card-icon"></i><h4>Brawlhalla</h4><small data-i18n="filterApps">تطبيقات</small></div>
+                    <div class="card portfolio-item" data-category="web-design"><i class="fa-solid fa-layer-group card-icon"></i><h4>MetaSpark</h4><small data-i18n="filterWebDesign">تصميم ويب</small></div>
+                    <div class="card portfolio-item" data-category="app"><i class="fa-solid fa-list-check card-icon"></i><h4>Task Manager</h4><small data-i18n="filterApps">تطبيقات</small></div>
                 </div>
             </article>
 
             <article data-page="blog">
-                <h2 class="article-title">المدونة</h2>
+                <h2 class="article-title" data-i18n="blogTitle">المدونة</h2>
                 <div class="grid-2">
-                    <div class="card"><small style="color:var(--accent);">Design • Feb 23, 2022</small><h4 style="margin-top:5px;">مؤتمرات التصميم في عام 2022</h4><p style="font-size:0.8rem;color:var(--text-secondary);margin-top:5px;">أهم الاتجاهات والتطورات في عالم تصميم واجهات المستخدم والملاحة الرقمية.</p></div>
-                    <div class="card"><small style="color:var(--accent);">Design • Feb 23, 2022</small><h4 style="margin-top:5px;">أفضل الخطوط لكل مصمم</h4><p style="font-size:0.8rem;color:var(--text-secondary);margin-top:5px;">كيف تختار الخط المناسب لهوية مشروعك لضمان تجربة مستخدم ممتازة.</p></div>
+                    <div class="card"><small style="color:var(--accent);">Design • Feb 23, 2022</small><h4 style="margin-top:5px;" data-i18n="blog1Title">مؤتمرات التصميم في عام 2022</h4><p style="font-size:0.8rem;color:var(--text-secondary);margin-top:5px;" data-i18n="blog1Desc">أهم الاتجاهات والتطورات في عالم تصميم واجهات المستخدم والملاحة الرقمية.</p></div>
+                    <div class="card"><small style="color:var(--accent);">Design • Feb 23, 2022</small><h4 style="margin-top:5px;" data-i18n="blog2Title">أفضل الخطوط لكل مصمم</h4><p style="font-size:0.8rem;color:var(--text-secondary);margin-top:5px;" data-i18n="blog2Desc">كيف تختار الخط المناسب لهوية مشروعك لضمان تجربة مستخدم ممتازة.</p></div>
                 </div>
             </article>
 
@@ -197,12 +219,12 @@
             </article>
 
             <article data-page="contact">
-                <h2 class="article-title">تواصل معي</h2>
-                <form onsubmit="event.preventDefault(); alert('تم إرسال رسالتك بنجاح!');">
-                    <input type="text" class="form-input" placeholder="الاسم الكامل" required>
-                    <input type="email" class="form-input" placeholder="البريد الإلكتروني" required>
-                    <textarea class="form-input" rows="4" placeholder="رسالتك..." required></textarea>
-                    <button type="submit" class="form-btn">إرسال الرسالة</button>
+                <h2 class="article-title" data-i18n="contactTitle">تواصل معي</h2>
+                <form id="contact-form">
+                    <input type="text" class="form-input" id="input-name" placeholder="الاسم الكامل" required>
+                    <input type="email" class="form-input" id="input-email" placeholder="البريد الإلكتروني" required>
+                    <textarea class="form-input" id="input-msg" rows="4" placeholder="رسالتك..." required></textarea>
+                    <button type="submit" class="form-btn" id="btn-submit-contact" data-i18n="btnSend">إرسال الرسالة</button>
                 </form>
             </article>
         </main>
@@ -210,8 +232,181 @@
 </div>
 
 <script>
-    // ============ NAVIGATION & THEME (بدون ألعاب) ============
+    // قاموس الترجمات الشامل لكافة أجزاء الموقع
+    const siteI18n = {
+        ar: {
+            siteTitle: "مازن المولد | السيرة الذاتية الذكية ATS",
+            modeYoung: "وضع الشباب",
+            modeAdult: "وضع المتخصصين",
+            modeSenior: "الوضع الهادئ",
+            profileName: "مازن الناصر منصور المولد",
+            profileTitle: "مبرمج ومطور ويب & مدير إبداعي",
+            labelEmail: "البريد الإلكتروني",
+            labelPhone: "الهاتف",
+            labelBirth: "تاريخ الميلاد",
+            valBirth: "2 فبراير 2003",
+            labelLocation: "الموقع",
+            valLocation: "المملكة العربية السعودية، المدينة المنورة / رابغ",
+            navAbout: "عني",
+            navResume: "السيرة الذاتية",
+            navPortfolio: "الأعمال",
+            navBlog: "المدونة",
+            navAts: "📄 السيرة الذكية ATS",
+            navContact: "تواصل معي",
+            aboutTitle: "نبذة عني",
+            aboutBio: "أنا مدير إبداعي ومصمم واجهات مستخدم (UI/UX) ومبرمج من المملكة العربية السعودية (المدينة المنورة / رابغ). أستمتع بتحويل المشاكل المعقدة إلى تصميمات بسيطة وجميلة ومبتكرة.",
+            servicesTitle: "ماذا أقدم",
+            serv1Title: "تصميم الويب",
+            serv1Desc: "تصميم حديث وعالي الجودة يتم إنجازه بمستوى احترافي.",
+            serv2Title: "تطوير الويب",
+            serv2Desc: "تطوير موقع إلكتروني احترافي وسريع ومتجاوب.",
+            serv3Title: "تطبيقات الجوال",
+            serv3Desc: "تطوير احترافي لتطبيقات أندرويد الذكية.",
+            testimonialsTitle: "التوصيات والشهادات",
+            test1Name: "الكلية التقنية بالمدينة المنورة",
+            test1Desc: "تم حل مشكلة في خدمات المتدربين بإنشاء موقع يسهل تقديم الطلبات والرد السريع عليها من قِبل الإدارة خلال فترة مشروع التخرج عام 2023.",
+            test2Name: "نورة فهد النفيسة",
+            test2Desc: "تم التعاقد مع مازن لإنشاء الهوية المؤسسية للشركة. سُعدنا جداً بالعمل المنجز، يمتلك خبرة كبيرة واهتماماً عميقاً باحتياجات العميل.",
+            resumeTitle: "السيرة الذاتية",
+            eduHeader: "التعليم",
+            edu1Title: "الكلية التقنية بالمدينة المنورة",
+            edu1Desc: "حاصل على الشهادة الجامعية المتوسطة - قسم الحاسب وتقنية المعلومات (تخصص تقنية البرمجيات وتطوير الويب).",
+            edu2Title: "المعهد الثانوي الصناعي",
+            edu2Desc: "حاصل على دبلوم المعهد الثانوي الصناعي - القسم الميكانيكي (تخصص تشغيل آلات الإنتاج).",
+            coursesHeader: "الدورات التدريبية",
+            course1Title: "أمن نظم المعلومات والتشفير",
+            course1Desc: "دورة متخصصة في مجال أمن المعلومات والتشفير الاستفادة منها كانت كبيرة وممتعة جداً.",
+            course2Title: "أمن المعلومات",
+            course2Desc: "دورة متخصصة في مجال أمن المعلومات الاستفادة منها كانت كبيرة وممتعة جداً.",
+            course3Title: "أمن الحوسبة",
+            course3Desc: "دورة متخصصة في مجال أمن الحوسبة منها كانت كبيرة وممتعة جداً.",
+            course4Title: "إدارة مشاريع تقنية المعلومات",
+            course4Desc: "دورة متخصصة في مجال إدارة مشاريع تقنية المعلومات الاستفادة منها كانت كبيرة وممتعة جداً.",
+            expHeader: "الخبرات",
+            exp1Title: "سائق رافعة شوكية",
+            exp1Desc: "في شركة رابغ لإدارة عمليات الأمداد البتروكيماويات RPL. تشغيل الرافعة لنقل والتحميل وتنزيل المواد داخل المستودع أو موقع العمل، ترتيب المواد وفق التعليمات، نقل المواد من وإلى مناطق التحميل والتفريغ، واستخدام معدات الرفع حسب الوزن.",
+            exp2Title: "مشغل آلات",
+            exp2Desc: "في شركة رابغ لإدارة عمليات الأمداد البتروكيماويات RPL. تشغيل الآلة وضبط إعداداتها، تغذية الماكينة بالمواد ورول البلاستيك ومواد الطباعة، تشغيل وحدات السحب والقطع، وعزل المنتجات المعيبة.",
+            skillsHeader: "المهارات",
+            portfolioTitle: "معرض الأعمال",
+            filterAll: "الكل",
+            filterWebDesign: "تصميم ويب",
+            filterWebDev: "تطوير ويب",
+            filterApps: "تطبيقات",
+            blogTitle: "المدونة",
+            blog1Title: "مؤتمرات التصميم في عام 2022",
+            blog1Desc: "أهم الاتجاهات والتطورات في عالم تصميم واجهات المستخدم والملاحة الرقمية.",
+            blog2Title: "أفضل الخطوط لكل مصمم",
+            blog2Desc: "كيف تختار الخط المناسب لهوية مشروعك لضمان تجربة مستخدم ممتازة.",
+            contactTitle: "تواصل معي",
+            inputNameHolder: "الاسم الكامل",
+            inputEmailHolder: "البريد الإلكتروني",
+            inputMsgHolder: "رسالتك...",
+            btnSend: "إرسال الرسالة",
+            alertMsgSent: "تم إرسال رسالتك بنجاح!"
+        },
+        en: {
+            siteTitle: "Mazen Al-Muwallad | Smart ATS Resume",
+            modeYoung: "Youth Mode",
+            modeAdult: "Pro Mode",
+            modeSenior: "Focus Mode",
+            profileName: "Mazen Nasser Al-Muwallad",
+            profileTitle: "Web Developer & Creative Director",
+            labelEmail: "Email",
+            labelPhone: "Phone",
+            labelBirth: "Date of Birth",
+            valBirth: "February 2, 2003",
+            labelLocation: "Location",
+            valLocation: "Saudi Arabia, Madinah / Rabigh",
+            navAbout: "About Me",
+            navResume: "Resume",
+            navPortfolio: "Portfolio",
+            navBlog: "Blog",
+            navAts: "📄 Smart ATS Resume",
+            navContact: "Contact",
+            aboutTitle: "About Me",
+            aboutBio: "I'm a Creative Director, UI/UX Designer, and Web Developer based in Saudi Arabia (Madinah / Rabigh). I enjoy converting complex problems into simple, beautiful, and intuitive designs.",
+            servicesTitle: "What I Do",
+            serv1Title: "Web Design",
+            serv1Desc: "Modern, high-quality designs created at a professional level.",
+            serv2Title: "Web Development",
+            serv2Desc: "High-performance, responsive, and robust websites.",
+            serv3Title: "Mobile Apps",
+            serv3Desc: "Professional mobile application development for Android.",
+            testimonialsTitle: "Testimonials",
+            test1Name: "College of Technology in Madinah",
+            test1Desc: "Resolved trainee service issues by creating a system for submitting requests and getting quick management responses during the 2023 graduation project.",
+            test2Name: "Noura Fahad Al-Nafisah",
+            test2Desc: "Mazen was contracted to create our corporate identity. We were delighted with the work; he possesses immense expertise and care for client needs.",
+            resumeTitle: "Resume",
+            eduHeader: "Education",
+            edu1Title: "College of Technology in Madinah",
+            edu1Desc: "Associate Degree - Computer & Information Technology (Software Technology & Web Development).",
+            edu2Title: "Industrial Secondary Institute",
+            edu2Desc: "Diploma - Mechanical Department (Production Machine Operations).",
+            coursesHeader: "Training Courses",
+            course1Title: "Information Security & Encryption",
+            course1Desc: "Specialized training course in information security & cryptography.",
+            course2Title: "Information Security",
+            course2Desc: "Specialized course in information security fundamentals and applications.",
+            course3Title: "Computing Security",
+            course3Desc: "Specialized course in cloud and system computing security.",
+            course4Title: "IT Project Management",
+            course4Desc: "Specialized course in managing technology projects efficiently.",
+            expHeader: "Work Experience",
+            exp1Title: "Forklift Driver",
+            exp1Desc: "At Rabigh Petrochemical Logistics (RPL). Operating forklifts for loading and unloading materials in warehouses, organizing items according to safety specs, and managing cargo transfer.",
+            exp2Title: "Machine Operator",
+            exp2Desc: "At Rabigh Petrochemical Logistics (RPL). Operating and tuning machines, feeding raw plastic/printing materials, running cutting units, and isolating defective products.",
+            skillsHeader: "Skills",
+            portfolioTitle: "Portfolio",
+            filterAll: "All",
+            filterWebDesign: "Web Design",
+            filterWebDev: "Web Dev",
+            filterApps: "Apps",
+            blogTitle: "Blog",
+            blog1Title: "Design Conferences in 2022",
+            blog1Desc: "Key trends and advancements in UI/UX design and navigation systems.",
+            blog2Title: "Best Fonts for Designers",
+            blog2Desc: "How to choose proper typography for your brand identity to ensure stellar UX.",
+            contactTitle: "Contact Me",
+            inputNameHolder: "Full Name",
+            inputEmailHolder: "Email Address",
+            inputMsgHolder: "Your Message...",
+            btnSend: "Send Message",
+            alertMsgSent: "Your message has been sent successfully!"
+        }
+    };
+
+    let currentSiteLang = localStorage.getItem('site_lang') || 'ar';
+
+    function updateSiteLanguage(lang) {
+        currentSiteLang = lang;
+        localStorage.setItem('site_lang', lang);
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+        const dict = siteI18n[lang];
+        document.getElementById('site-title').innerText = dict.siteTitle;
+        document.getElementById('lang-toggle').innerText = lang === 'ar' ? 'EN' : 'عربي';
+
+        // تحديث كل العناصر ذات المعرف data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if(dict[key]) el.innerText = dict[key];
+        });
+
+        // Placeholders
+        document.getElementById('input-name').placeholder = dict.inputNameHolder;
+        document.getElementById('input-email').placeholder = dict.inputEmailHolder;
+        document.getElementById('input-msg').placeholder = dict.inputMsgHolder;
+
+        // إرسال تنبيه لتطبيق React المدمج بالسيرة الذاتية الذكية
+        window.dispatchEvent(new CustomEvent('siteLangChange', { detail: lang }));
+    }
+
     (function() {
+        // Nav Links
         const navLinks = document.querySelectorAll('.navbar-link');
         const pages = document.querySelectorAll('article[data-page]');
         navLinks.forEach(link => {
@@ -225,22 +420,28 @@
             });
         });
 
-        // Theme toggle
+        // Theme Toggle
         const themeBtn = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('site_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.querySelector('i').className = savedTheme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+
         themeBtn.addEventListener('click', () => {
             const cur = document.documentElement.getAttribute('data-theme');
             const next = cur === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('site_theme', next);
             themeBtn.querySelector('i').className = next === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         });
 
-        // XP عداد بسيط (اختياري)
-        window.addXP = function(p) {
-            const el = document.getElementById('xp-count');
-            if(el) el.innerText = parseInt(el.innerText || '0') + p;
-        };
+        // Language Toggle Main
+        const langBtn = document.getElementById('lang-toggle');
+        langBtn.addEventListener('click', () => {
+            const newLang = currentSiteLang === 'ar' ? 'en' : 'ar';
+            updateSiteLanguage(newLang);
+        });
 
-        // Portfolio filter
+        // Portfolio Filter
         window.filterPortfolio = function(cat, btn) {
             document.querySelectorAll('.portfolio-item').forEach(item => {
                 item.classList.toggle('hide', cat !== 'all' && item.getAttribute('data-category') !== cat);
@@ -249,19 +450,31 @@
             if(btn) btn.classList.add('active');
         };
 
-        // Language toggle (بسيط)
-        let lang = 'ar';
-        const langBtn = document.getElementById('lang-toggle');
-        langBtn.addEventListener('click', () => {
-            lang = lang === 'ar' ? 'en' : 'ar';
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            langBtn.innerText = lang === 'ar' ? 'EN' : 'عربي';
+        // Form Auto-save & Submit
+        const contactInputs = ['input-name', 'input-email', 'input-msg'];
+        contactInputs.forEach(id => {
+            const el = document.getElementById(id);
+            if(el) {
+                el.value = localStorage.getItem(`contact_${id}`) || '';
+                el.addEventListener('input', () => {
+                    localStorage.setItem(`contact_${id}`, el.value);
+                });
+            }
         });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(siteI18n[currentSiteLang].alertMsgSent);
+            this.reset();
+            contactInputs.forEach(id => localStorage.removeItem(`contact_${id}`));
+        });
+
+        // تطبيق اللغة الابتدائية عند التشغيل
+        updateSiteLanguage(currentSiteLang);
     })();
 </script>
 
-<!-- سكربت السيرة الذاتية الذكية (React) -->
+<!-- React Application Script -->
 <script type="text/babel">
     const { useState, useEffect } = React;
 
@@ -276,103 +489,95 @@
         bronze: { primary: '#78350f', text: 'text-amber-900', border: 'border-amber-900', bg: 'bg-amber-50' }
     };
 
-    const defaultFormData = {
+    const defaultFormDataAr = {
         fullName: 'مازن ناصر المولد',
         jobTitle: 'مبرمج ومطور حلول رقمية وتطبيقات',
-        email: 'mazen@example.com', phone: '+966 59 273 2727', address: 'المملكة العربية السعودية',
+        email: 'webmazen4@gmail.com', phone: '+966 59 603 0154', address: 'المملكة العربية السعودية، رابغ',
         linkedin: 'linkedin.com/in/mazen-almowallad', github: 'github.com/mazen-mizo', website: 'mazen-dev.com',
         summary: 'مبرمج ومطور شغوف بتطوير المنصات الرقمية والمواقع الإلكترونية الاحترافية وتطبيقات الجوال، أتمتع بمهارات عالية في البرمجة والتصميم وبناء الأنظمة المتوافقة مع معايير جودة البرمجيات.',
         skills: 'React, Next.js, Node.js, Tailwind CSS, Python, PostgreSQL, Git, RESTful APIs, UI/UX Design',
-        experiences: [{ company: 'مؤسسة RPL التقنية', role: 'مطور حلول رقمية', duration: '2023 - الحالي', description: 'تطوير وتشغيل التطبيقات والأنظمة البرمجية، وتحسين أداء خوادم وقواعد البيانات لرفع كفاءة النظام بنسبة 35%.' }],
-        educations: [{ degree: 'دبلوم برمجة وتطوير الويب', institution: 'كلية التقنية بالمدينة المنورة', duration: '2020 - 2024' }],
+        experiences: [{ company: 'شركة رابغ RPL', role: 'مشغل وسائق عمليات', duration: '2024 - الحالي', description: 'إدارة وتشغيل الآليات والعمليات التنفيذية وتحسين الإنتاجية وتطبيق معايير الجودة والسلامة.' }],
+        educations: [{ degree: 'دبلوم تقنية البرمجيات وتطوير الويب', institution: 'الكلية التقنية بالمدينة المنورة', duration: '2020 - 2023' }],
         projects: [{ name: 'منصة بناء السير الذاتية ATS', link: 'https://mizo-resume.com', description: 'نظام متكامل لتوليد وتحميل السير الذاتية الاحترافية المتوافقة مع خوارزميات الفرز الآلي.' }],
-        certificates: [{ name: 'شهادة تطوير التطبيقات والحلول السحابية', issuer: 'أكاديمية طويق', year: '2025' }],
-        languagesList: [{ name: 'العربية', level: 'اللغة الأم (Native)' }, { name: 'الإنجليزية', level: 'متقدم (Professional)' }],
-        achievements: [{ title: 'المركز الثامن عشر في هاكاثون الابتكار البرمجي', details: 'تطوير حل رقمي لإدارة البيانات الذكية' }],
-        references: [{ name: 'د. أحمد السعيد', role: 'رئيس قسم التقنية - شركة الحلول', contact: 'ahmed@example.com' }]
+        certificates: [{ name: 'أمن نظم المعلومات والتشفير', issuer: 'مركز تدريب معتمد', year: '2024' }],
+        languagesList: [{ name: 'العربية', level: 'اللغة الأم' }, { name: 'الإنجليزية', level: 'متقدم (Professional)' }],
+        achievements: [{ title: 'مشروع التخرج المتميز', details: 'تطوير منصة رقمية لإدارة طلبات المتدربين بالكلية التقنية' }],
+        references: [{ name: 'إدارة الكلية التقنية', role: 'قسم الحاسب وتقنية المعلومات', contact: 'info@tvtc.gov.sa' }]
     };
-    const emptyFormData = { fullName:'', jobTitle:'', email:'', phone:'', address:'', linkedin:'', github:'', website:'', summary:'', skills:'', experiences:[], educations:[], projects:[], certificates:[], languagesList:[], achievements:[], references:[] };
+
+    const defaultFormDataEn = {
+        fullName: 'Mazen Nasser Al-Muwallad',
+        jobTitle: 'Programmer & Digital Solutions Developer',
+        email: 'webmazen4@gmail.com', phone: '+966 59 603 0154', address: 'Saudi Arabia, Rabigh',
+        linkedin: 'linkedin.com/in/mazen-almowallad', github: 'github.com/mazen-mizo', website: 'mazen-dev.com',
+        summary: 'Passionate Programmer and Developer focused on creating digital platforms, web applications, and mobile systems with high attention to UI/UX and software standards.',
+        skills: 'React, Next.js, Node.js, Tailwind CSS, Python, PostgreSQL, Git, RESTful APIs, UI/UX Design',
+        experiences: [{ company: 'Rabigh Logistics (RPL)', role: 'Operations & Machine Operator', duration: '2024 - Present', description: 'Managing machine operations, logistics workflows, and optimizing productivity.' }],
+        educations: [{ degree: 'Associate Degree in Software & Web Development', institution: 'College of Technology in Madinah', duration: '2020 - 2023' }],
+        projects: [{ name: 'ATS Resume Builder Platform', link: 'https://mizo-resume.com', description: 'An integrated system for generating ATS-compliant resumes.' }],
+        certificates: [{ name: 'Information Security & Encryption', issuer: 'Certified Center', year: '2024' }],
+        languagesList: [{ name: 'Arabic', level: 'Native' }, { name: 'English', level: 'Professional' }],
+        achievements: [{ title: 'Excellence Graduation Project', details: 'Developed a digital request platform for trainees.' }],
+        references: [{ name: 'College Management', role: 'IT Department', contact: 'info@tvtc.gov.sa' }]
+    };
 
     const translations = {
-        ar: { title:"منصة السير الذاتية الذكية (ATS)", subtitle:"تطوير: المبرمج ميزو / مازن ناصر المولد", langBtn:"English", darkModeBtn:"الوضع الليلي", lightModeBtn:"الوضع النهاري", aiTab:"مساعد الذكاء الاصطناعي ✨", personalTab:"الشخصية والروابط", expTab:"الخبرات والتعليم", projectsTab:"المشاريع والشهادات", moreTab:"المهارات واللغات", extraTab:"الإنجازات والمراجع", designTab:"التصميم والتخصيص", personalInfo:"المعلومات الشخصية والاتصال", fullName:"الاسم الكامل", jobTitle:"المسمى الوظيفي المستهدف", email:"البريد الإلكتروني", phone:"رقم الهاتف", address:"العنوان / المدينة", linkedin:"رابط LinkedIn", github:"رابط معرض الأعمال / GitHub", website:"الموقع الشخصي", summary:"الملخص المهني", experience:"الخبرات العملية", addExperience:"+ إضافة خبرة", company:"الشركة / الجهة", role:"المسمى الوظيفي", duration:"الفترة الزمنية", description:"الوصف والمهام والإنجازات", education:"المؤهلات التعليمية", addEducation:"+ إضافة مؤهل", degree:"المؤهل / التخصص", institution:"الجامعة / الكلية", projects:"المشاريع والنماذج", addProject:"+ إضافة مشروع", projName:"اسم المشروع", projLink:"رابط المشروع", certs:"الشهادات والدورات الاحترافية", addCert:"+ إضافة شهادة", certName:"اسم الشهادة", issuer:"الجهة المانحة", skills:"المهارات الفنية والناعمة (افصل بينها بفاصلة)", languages:"اللغات المتقنة", addLang:"+ إضافة لغة", langName:"اللغة", langLevel:"المستوى", achievements:"الجوائز والإنجازات", addAch:"+ إضافة إنجاز", achTitle:"عنوان الإنجاز / الجائزة", achDesc:"التفاصيل", references:"المراجع والتوصيات", addRef:"+ إضافة مرجع", refName:"اسم الشخص / الموصي", refRole:"المسمى والجهة", refContact:"بيانات التواصل", downloadPdf:"تحميل السيرة الذاتية (PDF)", footer:"جميع الحقوق محفوظة © المبرمج ميزو / مازن ناصر المولد - حلول رقمية احترافية", chooseTemplate:"اختر هيكل ATS الأساسي:", chooseColor:"اختر اللون الرئيسي:", chooseFont:"نوع الخط:", chooseFontSize:"حجم النص:", aiTitle:"أدوات الذكاء الاصطناعي الشاملة (11 خياراً)", aiSub:"اختر الخيار المناسب لتوليد وتحسين وتدقيق السيرة الذاتية تلقائياً وفقاً للمسمى الوظيفي:", btnFullResume:"1. توليد سيرة ذاتية واقعية 100% للمسمى الوظيفي ✨", btnCoverLetter:"2. إنشاء خطاب تغطية (Cover Letter)", btnMatchJob:"3. مطابقة السيرة مع إعلان وظيفي", btnTranslate:"4. ترجمة السيرة الذاتية بالكامل", summaryStyle:"5. أسلوب الملخص المهني:", style1:"قيادي واحترافي", style2:"موجّه للإنجازات والنتائج", style3:"عصري ومختصر", btnGenSummary:"توليد الملخص المهني", btnEnhanceExp:"6. إعادة صياغة الخبرات بمعايير ATS", btnGenSkills:"7. اقتراح حزمة مهارات دقيقة للتخصص", btnCheckResume:"8. فحص وتقييم السيرة الذاتية (Score)", btnInterviewQs:"9. اقتراح أسئلة المقابلات التنافسية", btnEnhanceTitles:"10. تحسين المسميات والتقنيات برمجياً", btnQuantifyAch:"11. إدراج إنجازات معززة بالأرقام والنسب", jobDescPlaceholder:"الصق الوصف الوظيفي هنا لمطابقة الكلمات المفتاحية...", btnClearAll:"حذف كل البيانات", btnRestoreDefault:"استعادة البيانات الافتراضية", autoSaveNotice:"تتم التعديلات مع الحفظ التلقائي الفوري" },
-        en: { title:"AI ATS Resume Builder Pro", subtitle:"Dev: Programmer Mizo / Mazen Nasser Al-Mowallad", langBtn:"عربي", darkModeBtn:"Dark Mode", lightModeBtn:"Light Mode", aiTab:"AI Assistant Hub ✨", personalTab:"Personal & Links", expTab:"Exp & Education", projectsTab:"Projects & Certs", moreTab:"Skills & Languages", extraTab:"Awards & References", designTab:"Design & Styles", personalInfo:"Personal & Contact Info", fullName:"Full Name", jobTitle:"Target Job Title", email:"Email Address", phone:"Phone Number", address:"Address / Location", linkedin:"LinkedIn URL", github:"GitHub / Portfolio URL", website:"Personal Website", summary:"Professional Summary", experience:"Work Experience", addExperience:"+ Add Experience", company:"Company", role:"Role", duration:"Duration", description:"Description & Achievements", education:"Education", addEducation:"+ Add Education", degree:"Degree / Major", institution:"University / College", projects:"Projects & Portfolio", addProject:"+ Add Project", projName:"Project Name", projLink:"Project Link", certs:"Certificates & Training", addCert:"+ Add Certificate", certName:"Certificate Name", issuer:"Issuer / Organization", skills:"Technical & Soft Skills (Comma separated)", languages:"Languages", addLang:"+ Add Language", langName:"Language", langLevel:"Proficiency Level", achievements:"Honors & Awards", addAch:"+ Add Award", achTitle:"Award Title", achDesc:"Details", references:"References", addRef:"+ Add Reference", refName:"Reference Name", refRole:"Role & Organization", refContact:"Contact Info", downloadPdf:"Download Resume (PDF)", footer:"All Rights Reserved © Programmer Mizo / Mazen Nasser Al-Mowallad", chooseTemplate:"Choose Base ATS Layout:", chooseColor:"Select Primary Color:", chooseFont:"Select Font Family:", chooseFontSize:"Font Size:", aiTitle:"Full AI Toolkit (11 Smart Tools)", aiSub:"Build highly realistic resumes tailored precisely to your targeted role:", btnFullResume:"1. Auto-Generate 100% Realistic Resume ✨", btnCoverLetter:"2. Generate Matching Cover Letter", btnMatchJob:"3. Tailor Resume to Job Description", btnTranslate:"4. Translate Entire Resume", summaryStyle:"5. Summary Style:", style1:"Leadership & Corporate", style2:"Results-Driven", style3:"Modern & Concise", btnGenSummary:"Generate Summary", btnEnhanceExp:"6. Enhance Experiences for ATS", btnGenSkills:"7. Suggest Domain-Specific Skillset", btnCheckResume:"8. Audit & Score Resume Quality", btnInterviewQs:"9. Generate Interview Questions", btnEnhanceTitles:"10. Optimize Job Titles & Terminology", btnQuantifyAch:"11. Add Quantified Metric Achievements", jobDescPlaceholder:"Paste job description here to optimize keywords...", btnClearAll:"Clear All Data", btnRestoreDefault:"Restore Sample Data", autoSaveNotice:"Changes are saved in real-time" }
+        ar: { title:"منصة السير الذاتية الذكية (ATS)", subtitle:"تطوير: مازن ناصر المولد", personalTab:"الشخصية والروابط", expTab:"الخبرات والتعليم", projectsTab:"المشاريع والشهادات", moreTab:"المهارات واللغات", extraTab:"الإنجازات والمراجع", designTab:"التصميم والتخصيص", personalInfo:"المعلومات الشخصية والاتصال", fullName:"الاسم الكامل", jobTitle:"المسمى الوظيفي المستهدف", email:"البريد الإلكتروني", phone:"رقم الهاتف", address:"العنوان / المدينة", linkedin:"رابط LinkedIn", github:"رابط معرض الأعمال / GitHub", website:"الموقع الشخصي", summary:"الملخص المهني", experience:"الخبرات العملية", addExperience:"+ إضافة خبرة", company:"الشركة / الجهة", role:"المسمى الوظيفي", duration:"الفترة الزمنية", description:"الوصف والمهام والإنجازات", education:"المؤهلات التعليمية", addEducation:"+ إضافة مؤهل", degree:"المؤهل / التخصص", institution:"الجامعة / الكلية", projects:"المشاريع والنماذج", addProject:"+ إضافة مشروع", projName:"اسم المشروع", projLink:"رابط المشروع", certs:"الشهادات والدورات الاحترافية", addCert:"+ إضافة شهادة", certName:"اسم الشهادة", issuer:"الجهة المانحة", skills:"المهارات الفنية والناعمة (افصل بينها بفاصلة)", languages:"اللغات المتقنة", addLang:"+ إضافة لغة", langName:"اللغة", langLevel:"المستوى", achievements:"الجوائز والإنجازات", addAch:"+ إضافة إنجاز", achTitle:"عنوان الإنجاز / الجائزة", achDesc:"التفاصيل", references:"المراجع والتوصيات", addRef:"+ إضافة مرجع", refName:"اسم الشخص / الموصي", refRole:"المسمى والجهة", refContact:"بيانات التواصل", downloadPdf:"تحميل السيرة الذاتية (PDF)", chooseTemplate:"اختر هيكل ATS الأساسي:", chooseColor:"اختر اللون الرئيسي:", chooseFont:"نوع الخط:", chooseFontSize:"حجم النص:", resetData:"إعادة ضبط البيانات الأصلية", autoSaveActive:"حفظ تلقائي مفعل" },
+        en: { title:"AI ATS Resume Builder Pro", subtitle:"Dev: Mazen Nasser Al-Muwallad", personalTab:"Personal & Links", expTab:"Exp & Education", projectsTab:"Projects & Certs", moreTab:"Skills & Languages", extraTab:"Awards & References", designTab:"Design & Styles", personalInfo:"Personal & Contact Info", fullName:"Full Name", jobTitle:"Target Job Title", email:"Email Address", phone:"Phone Number", address:"Address / Location", linkedin:"LinkedIn URL", github:"GitHub / Portfolio URL", website:"Personal Website", summary:"Professional Summary", experience:"Work Experience", addExperience:"+ Add Experience", company:"Company", role:"Role", duration:"Duration", description:"Description & Achievements", education:"Education", addEducation:"+ Add Education", degree:"Degree / Major", institution:"University / College", projects:"Projects & Portfolio", addProject:"+ Add Project", projName:"Project Name", projLink:"Project Link", certs:"Certificates & Training", addCert:"+ Add Certificate", certName:"Certificate Name", issuer:"Issuer / Organization", skills:"Technical & Soft Skills (Comma separated)", languages:"Languages", addLang:"+ Add Language", langName:"Language", langLevel:"Proficiency Level", achievements:"Honors & Awards", addAch:"+ Add Award", achTitle:"Award Title", achDesc:"Details", references:"References", addRef:"+ Add Reference", refName:"Reference Name", refRole:"Role & Organization", refContact:"Contact Info", downloadPdf:"Download Resume (PDF)", chooseTemplate:"Choose Base ATS Layout:", chooseColor:"Select Primary Color:", chooseFont:"Select Font Family:", chooseFontSize:"Font Size:", resetData:"Reset to Defaults", autoSaveActive:"Auto-save active" }
     };
 
-    function generateRealisticDataForTitle(jobTitle, lang = 'ar') {
-        const title = jobTitle.trim(); const lower = title.toLowerCase(); let category = 'general';
-        if (/(مبرمج|مطور|برمجة|تقني|ويب|تطبيق|مهندس برمجيات|برمجيات|data|software|developer|frontend|backend|fullstack|cyber|ai)/i.test(lower)) category = 'tech';
-        else if (/(طبيب|دكتور|ممرض|صيدلي|علاج طبيعي|تمريض|مختبرات|صحة|medical|doctor|nurse|pharmacist)/i.test(lower)) category = 'medical';
-        else if (/(محاسب|مالي|تدقيق|مراجعة|بنوك|استثمار|accountant|finance|auditor|financial)/i.test(lower)) category = 'finance';
-        else if (/(مهندس|هندسة|مدني|معماري|كهرباء|ميكانيكا|مشروع|engineer|civil|architect|mechanical)/i.test(lower)) category = 'engineering';
-        else if (/(معلم|مدرس|أستاذ|تدريب|محاضر|تعليم|teacher|instructor|professor|education)/i.test(lower)) category = 'education';
-        else if (/(تسويق|مبيعات|سوشيال ميديا|تسويق رقمي|محتوى|مبيعات خارجية|marketing|sales|digital marketing)/i.test(lower)) category = 'marketing';
-        else if (/(موارد بشرية|إدارة|سكرتير|منسق|hr|human resources|administrator|management|coordinator)/i.test(lower)) category = 'hr_admin';
-
-        if (lang === 'ar') {
-            const data = {
-                tech: { summary:`محترف ومتخصص في مجال (${title}) يمتلك خبرة عملية في تطوير الحلول الرقمية، تصميم البرمجيات، وبناء الأنظمة المتكاملة وفق أحدث معايير الجودة والأمان البرمجي. أمتلك قدرة مثبتة على تحويل متطلبات العمل إلى تطبيقات واجهة مستخدم وأنظمة خلفية عالية الأداء.`, skills:'JavaScript, React.js, Node.js, Python, SQL/PostgreSQL, RESTful APIs, Git/GitHub, Docker, حل المشكلات المعقدة, التفكير التحليلي, إدارة المشاريع الرقمية', experiences:[{company:'شركة التقنيات المتقدمة', role:title, duration:'2023 - الحالي', description:`قيادة وتنفيذ المشاريع البرمجية والحلول الرقمية الخاصة بـ ${title}، مع تحسين كفاءة قواعد البيانات والأداء البرمجي بنسبة 40%.`}], educations:[{degree:'بكالوريوس علوم الحاسب / تقنية المعلومات', institution:'جامعة الملك عبدالعزيز', duration:'2017 - 2021'}], projects:[{name:`نظام منصة ${title} الرقمي`, link:'https://github.com/project-demo', description:'تطوير منصة متكاملة للتعامل مع البيانات والعمليات اليومية باستخدام أحدث التقنيات السحابية.'}], certificates:[{name:'الشهادة الاحترافية في إدارة البرمجيات والحلول السحابية', issuer:'أكاديمية طويق / AWS', year:'2024'}] },
-                medical: { summary:`ممارس صحي متمرس بوظيفة (${title}) أتمتع بمهارات عالية في التشخيص المباشر، تقديم الرعاية الصحية الشاملة، والالتزام الصارم بمعايير السلامة والجودة الطبية.`, skills:'التشخيص الطبي الدقيق, الرعاية المباشرة للمرضى, إدارة الحالات الحرجة, تطبيق معايير السلامة الصحية, التواصل الطبي', experiences:[{company:'مستشفى الرعاية التخصصي', role:title, duration:'2022 - الحالي', description:'تقديم الرعاية الصحية المباشرة وإدارة متابعة الحالات والمرضى مع ضمان تحقيق أعلى نسب الرضا والجودة الصحية.'}], educations:[{degree:`بكالوريوس ${title} / العلوم الطبية`, institution:'جامعة الملك سعود', duration:'2015 - 2020'}], projects:[{name:'برنامج مبادرة تحسين الجودة الصحية', link:'مبادرة داخلية', description:'تطوير دليل إرشادي لتقليل زمن انتظار المرضى وزيادة دقة المتابعة الطبية.'}], certificates:[{name:'شهادة دعم الحياة الأساسية (BLS) والإنعاش الرئوي', issuer:'جمعية القلب الأمريكية', year:'2024'}] },
-                finance: { summary:`محاسب ومالي متخصص في (${title}) يمتلك خبرة دقيقة في إعداد القوائم المالية، التدقيق المحاسبي، إدارة الحسابات، وتحليل الميزانيات باستخدام الأنظمة المحاسبية الحديثة برامج ERP.`, skills:'إعداد القوائم المالية, التسويات البنكية, برامج ERP (Odoo/SAP), الإقرار الضريبي وZATCA, التحليل المالي, إدارة التدفقات النقدية', experiences:[{company:'شركة الأفق للاستثمار والمالية', role:title, duration:'2022 - الحالي', description:'إدارة التقارير المالية الشهرية والسنوية، وإعداد التسويات المالية والضرائب مما خفض الأخطاء المحاسبية بنسبة 30%.'}], educations:[{degree:'بكالوريوس المحاسبة والعلوم المالية', institution:'جامعة الإمام محمد بن سعود', duration:'2016 - 2020'}], projects:[{name:'مشروع أتمتة التقارير المالية والضريبية', link:'مشروع داخلي', description:'تطبيق نظام آلي لإدراج المبيعات وتوليد الفواتير المعتمدة للربط الضريبي.'}], certificates:[{name:'شهادة زمالة الهيئة السعودية للمراجعين والمحاسبين (SOCPA)', issuer:'الهيئة السعودية للمراجعين والمحاسبين', year:'2024'}] },
-                engineering: { summary:`مهندس متخصص في (${title}) يمتلك خلفية قوية في تخطيط وتنفيذ المشاريع الهندسيّة، الإشراف الفني، وإدارة المواد والجداول الزمنية مع الالتزام التام بكود البناء.`, skills:'AutoCAD, Revit, إدارة المشاريع الهندسية, حساب التكاليف والكميات, الإشراف الميداني, كود البناء السعودي, السلامة المهنية (OSHA)', experiences:[{company:'شركة الإعمار للهندسة والمقاولات', role:title, duration:'2022 - الحالي', description:'الإشراف الميداني والفني على التنفيذ والمخططات، وضمان الالتزام بالمواصفات الفنية والجداول الزمنية.'}], educations:[{degree:'بكالوريوس الهندسة', institution:'جامعة الملك فهد للبترول والمعادن', duration:'2015 - 2020'}], projects:[{name:'مشروع تطوير المخططات والمجمعات الحديثة', link:'مشروع هندسي ميداني', description:'إدارة وتنسيق الأعمال الهندسية لإنشاء مجمع متعدد الأغراض بأساليب بناء حديثة.'}], certificates:[{name:'اعتماد الهيئة السعودية للمهندسين (درجة مشارك)', issuer:'الهيئة السعودية للمهندسين', year:'2023'}] },
-                education: { summary:`تربوي ومدرس متمرس في مجال (${title}) أتمتع بقدرة عالية على إعداد الخطط الدراسية وتطبيق استراتيجيات التعليم الحديثة واستخدام الوسائل التقنية التفاعلية.`, skills:'استراتيجيات التدريس الحديثة, إعداد المناهج والخطط الدراسية, إدارة الصف والتفاعل, التقنيات التعليمية الرقمية, القياس والتقويم', experiences:[{company:'مدارس أجيال المستقبل', role:title, duration:'2021 - الحالي', description:'تدريس المناهج وتطبيق أنشطة تعليمية تفاعلية أدت لزيادة تحصيل الطلاب بنسبة 25%.'}], educations:[{degree:'بكالوريوس التربية والتخصص', institution:'جامعة أم القرى', duration:'2015 - 2019'}], projects:[{name:'مبادرة الفصل الرقمي التفاعلي', link:'مشروع تعليمي', description:'دمج الوسائل الرقمية والتطبيقات التفاعلية في تقديم الدروس اليومية.'}], certificates:[{name:'الرخصة المهنية للتعليم (ممارس)', issuer:'هيئة تقويم التعليم والتدريب', year:'2023'}] },
-                marketing: { summary:`أخصائي ومتخصص في (${title}) أمتلك شغفاً كبيراً في بناء الحملات التسويقية، زيادة المبيعات، تحليل سلوك العملاء، وإدارة القنوات الرقمية والميدانية.`, skills:'التسويق الرقمي (SEO/SEM), إدارة حملات وسائل التواصل, كتابة المحتوى الإعلاني, تحليل البيانات, إستراتيجيات المبيعات, CRM', experiences:[{company:'شركة النمو للتسويق والحلول', role:title, duration:'2022 - الحالي', description:'إدارة وتخطيط الحملات التسويقية ونمو مبيعات المنتجات بنسبة 35% خلال عام واحد.'}], educations:[{degree:'بكالوريوس التسويق وإدارة الأعمال', institution:'جامعة الملك سعود', duration:'2016 - 2020'}], projects:[{name:'حملة إطلاق الهوية الرقمية الجديدة', link:'https://marketing-campaign.com', description:'حملة تسويقية متكاملة حققت الوصول لأكثر من 500 ألف مستخدم مهتم.'}], certificates:[{name:'شهادة احتراف التسويق الرقمي المعتمدة', issuer:'Google / Meta Certified', year:'2024'}] },
-                hr_admin: { summary:`متخصص ومحترف في (${title}) أتمتع بمهارات عالية في الاستقطاب والتوظيف، إدارة العمليات الإدارية، تطوير البيئة التنظيمية، والالتزام بنظام العمل.`, skills:'الاستقطاب والتوظيف, إدارة علاقات الموظفين, نظام العمل والعمال, منصات قوى ومقيم, إدارة الأجور والمرتبات', experiences:[{company:'مجموعة الأعمال الكبرى', role:title, duration:'2022 - الحالي', description:'إدارة ملفات التوظيف والخدمات الذاتية، وتنفيذ برامج رفع إنتاجية الموظفين ورضاهم الوظيفي.'}], educations:[{degree:'بكالوريوس إدارة الأعمال / الموارد البشرية', institution:'جامعة الملك عبدالعزيز', duration:'2016 - 2020'}], projects:[{name:'مشروع أتمتة وتطوير دليل الموارد البشرية', link:'مشروع داخلي', description:'تحديث اللائحة الداخلية ونقل كافة طلبات الموظفين إلى منصة رقمية ذاتية.'}], certificates:[{name:'الشهادة الاحترافية في الموارد البشرية (CIPD / SHRM)', issuer:'المعهد العالمي للموارد البشرية', year:'2024'}] },
-                general: { summary:`محترف ومتخصص في مجال (${title}) أتمتع بخبرة متميزة ومهارات عالية في تنفيذ المهام وتحسين جودة أداء العمل.`, skills:`إدارة عمليات ${title}, حل المشكلات, تنظيم الوقت والمهام, التواصل الاحترافي, العمل الجماعي`, experiences:[{company:'شركة الأعمال المتقدمة', role:title, duration:'2022 - الحالي', description:`إدارة وتنفيذ المهام الرئيسية الخاصة بـ ${title} بنجاح، ورفع كفاءة وسرعة الإنجاز بنسبة 30%.`}], educations:[{degree:'شهادة تخصصية / بكالوريوس في المجال', institution:'إحدى الجامعات المعتمدة', duration:'2016 - 2020'}], projects:[{name:`مشروع تطوير أعمال ${title}`, link:'مشروع إنجاز', description:'تطبيق أساليب جديدة ساهمت في تسهيل وتنظيم خطوات العمل وتوفير الوقت.'}], certificates:[{name:`الشهادة المهنية المعتمدة في ${title}`, issuer:'الجهة المهنية المعتمدة', year:'2024'}] }
-            };
-            return data[category] || data.general;
-        } else {
-            return {
-                summary: `Dedicated and goal-oriented ${title} with proven expertise in driving operational excellence, executing key deliverables, and solving complex problems. Adept at leveraging modern methodologies and industry best practices.`,
-                skills: `${title} Operations, Process Optimization, Strategic Planning, Technical Problem Solving, Cross-functional Leadership, Analytical Skills`,
-                experiences: [{company:'Enterprise Solutions Corp', role:title, duration:'2022 - Present', description:`Leading key functions and projects as ${title}, optimizing internal workflows and raising performance by 35%.`}],
-                educations: [{degree:`Bachelor's Degree related to ${title}`, institution:'Accredited University', duration:'2016 - 2020'}],
-                projects: [{name:`${title} Optimization Project`, link:'https://project-link.com', description:'Designed and deployed an integrated workflow to automate routine tasks and enhance throughput.'}],
-                certificates: [{name:`Certified Professional in ${title}`, issuer:'International Professional Board', year:'2024'}]
-            };
-        }
-    }
-
     function ATSApp() {
-        const [lang, setLang] = useState(() => localStorage.getItem('mizo_ats_lang') || 'ar');
-        const [activeTab, setActiveTab] = useState('ai');
-        const [selectedLayout, setSelectedLayout] = useState(() => localStorage.getItem('mizo_ats_layout') || 'layout1');
-        const [selectedColor, setSelectedColor] = useState(() => localStorage.getItem('mizo_ats_color') || 'navy');
+        const [lang, setLang] = useState(localStorage.getItem('site_lang') || 'ar');
+        const [activeTab, setActiveTab] = useState('personal');
+        const [selectedLayout, setSelectedLayout] = useState('layout1');
+        const [selectedColor, setSelectedColor] = useState(() => localStorage.getItem('ats_color') || 'navy');
         const [selectedFont, setSelectedFont] = useState('font-cairo');
         const [fontSize, setFontSize] = useState('text-xs');
-        const [darkMode, setDarkMode] = useState(() => localStorage.getItem('mizo_ats_theme') === 'dark');
-        const [formData, setFormData] = useState(() => { const saved = localStorage.getItem('mizo_ats_data'); if(saved) try{return JSON.parse(saved)}catch(e){} return defaultFormData; });
-        const [jobDescInput, setJobDescInput] = useState('');
-        const [summaryStyle, setSummaryStyle] = useState('style1');
-        const [aiResultBox, setAiResultBox] = useState(null);
-        const [aiLoading, setAiLoading] = useState(false);
 
-        useEffect(() => { localStorage.setItem('mizo_ats_data', JSON.stringify(formData)); }, [formData]);
-        useEffect(() => { localStorage.setItem('mizo_ats_lang', lang); }, [lang]);
-        useEffect(() => { localStorage.setItem('mizo_ats_layout', selectedLayout); }, [selectedLayout]);
-        useEffect(() => { localStorage.setItem('mizo_ats_color', selectedColor); }, [selectedColor]);
-        useEffect(() => { if(darkMode) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark'); localStorage.setItem('mizo_ats_theme', darkMode?'dark':'light'); }, [darkMode]);
+        // جلب البيانات المخزنة تلقائياً
+        const [formData, setFormData] = useState(() => {
+            const savedData = localStorage.getItem(`ats_formData_${lang}`);
+            if (savedData) {
+                try { return JSON.parse(savedData); } catch (e) {}
+            }
+            return lang === 'ar' ? defaultFormDataAr : defaultFormDataEn;
+        });
+
+        // حفظ تلقائي فوري مع أي تغيير للبيانات
+        useEffect(() => {
+            localStorage.setItem(`ats_formData_${lang}`, JSON.stringify(formData));
+        }, [formData, lang]);
+
+        useEffect(() => {
+            localStorage.setItem('ats_color', selectedColor);
+        }, [selectedColor]);
+
+        useEffect(() => {
+            const handleLangChange = (e) => {
+                const newLang = e.detail;
+                setLang(newLang);
+                const savedData = localStorage.getItem(`ats_formData_${newLang}`);
+                if (savedData) {
+                    try {
+                        setFormData(JSON.parse(savedData));
+                        return;
+                    } catch(err){}
+                }
+                setFormData(newLang === 'ar' ? defaultFormDataAr : defaultFormDataEn);
+            };
+            window.addEventListener('siteLangChange', handleLangChange);
+            return () => window.removeEventListener('siteLangChange', handleLangChange);
+        }, []);
+
+        const handleResetData = () => {
+            if(confirm(lang === 'ar' ? 'هل أنت تأكد من إعادة ضبط البيانات إلى الوضع الافتراضي؟' : 'Are you sure you want to reset all data to default?')) {
+                const defaultData = lang === 'ar' ? defaultFormDataAr : defaultFormDataEn;
+                setFormData(defaultData);
+                localStorage.setItem(`ats_formData_${lang}`, JSON.stringify(defaultData));
+            }
+        };
 
         const t = translations[lang];
-
-        const handleGenerateFullResume = () => {
-            const title = formData.jobTitle.trim(); if(!title){ alert('يرجى إدخال المسمى الوظيفي أولاً'); return; }
-            setAiLoading(true); setAiResultBox(null);
-            setTimeout(() => {
-                const gen = generateRealisticDataForTitle(title, lang);
-                setFormData(prev => ({...prev, jobTitle:title, summary:gen.summary, skills:gen.skills, experiences:gen.experiences, educations:gen.educations, projects:gen.projects, certificates:gen.certificates}));
-                setAiLoading(false); setAiResultBox({type:'success', text: lang==='ar' ? `تم توليد سيرة ذاتية واقعية ومخصصة 100% لـ (${title})!` : `100% Realistic resume successfully tailored for (${title})!`});
-            }, 800);
-        };
-        const handleCoverLetter = () => { setAiLoading(true); setTimeout(()=>{ const letter = lang==='ar' ? `السادة/ فريق التوظيف المحترمين،\n\nأتقدم إليكم برغبتي القوية في الانضمام لفريقكم الشغوف بوظيفة (${formData.jobTitle || 'المتخصص'}).\n\nمع فائق الاحترام،\n${formData.fullName || 'المتقدم'}` : `Dear Hiring Team,\n\nI am writing to express my interest in the (${formData.jobTitle || 'specialist'}) position.\n\nBest Regards,\n${formData.fullName || 'Applicant'}`; setAiLoading(false); setAiResultBox({type:'text', title:lang==='ar'?'خطاب التغطية:':'Cover Letter:', text:letter}); },700); };
-        const handleTranslate = () => { setAiLoading(true); setTimeout(()=>{ if(lang==='ar') setFormData(prev=>({...prev, fullName:'Mazen Nasser Al-Mowallad', jobTitle:'Programmer & Digital Solutions Developer', address:'Saudi Arabia', summary:'Passionate programmer specializing in building digital platforms and mobile applications with focus on software quality.', skills:'React, Next.js, Node.js, Tailwind CSS, Python, PostgreSQL, Git, RESTful APIs, Software Architecture'})); else setFormData(prev=>({...prev, fullName:'مازن ناصر المولد', jobTitle:'مبرمج ومطور حلول رقمية وتطبيقات', address:'المملكة العربية السعودية', summary:'مبرمج ومطور شغوف بتطوير المنصات الرقمية والمواقع الإلكترونية الاحترافية وتطبيقات الجوال مع الالتزام بمعايير الجودة.', skills:'React, Next.js, Node.js, Tailwind CSS, Python, PostgreSQL, Git, RESTful APIs, UI/UX Design'})); setAiLoading(false); setAiResultBox({type:'success', text:lang==='ar'?'تم ترجمة العناصر الأساسية بنجاح!':'Key elements translated successfully!'}); },750); };
-        const handleGenSummary = () => { setAiLoading(true); setTimeout(()=>{ let res=''; const role=formData.jobTitle||'المتخصص'; if(lang==='ar'){ if(summaryStyle==='style1') res=`متخصص وخبير قيادي في مجال ${role} يتمتع بخلفية عمليّة وأكاديمية قوية.`; else if(summaryStyle==='style2') res=`محترف نتائج في ${role}، ساهم في تحسين الكفاءة التشغيلية بنسبة 35% وتطوير حلول مبتكرة.`; else res=`${role} شغوف بالابتكار والتطوير المستمر.`; } else { if(summaryStyle==='style1') res=`Accomplished ${role} with a strong professional background and a proven track record.`; else if(summaryStyle==='style2') res=`Results-oriented ${role} focused on improving operational efficiency by 35%.`; else res=`Passionate ${role} skilled in modern methodologies.`; } setFormData(prev=>({...prev, summary:res})); setAiLoading(false); setAiResultBox({type:'success', text:lang==='ar'?'تم تطبيق الملخص المهني الجديد!':'New professional summary applied!'}); },700); };
-        const handleEnhanceExp = () => { setAiLoading(true); setTimeout(()=>{ const enhanced = formData.experiences.map(exp=> ({...exp, description: lang==='ar'? `إدارة وتطبيق أفضل الممارسات المهنية بوظيفة (${exp.role||formData.jobTitle})، وتطوير الآليات التشغيلية مما أدى لرفع الكفاءة بنسبة 35%.` : `Led and implemented best industry practices as (${exp.role||formData.jobTitle}), optimizing core workflows and increasing overall performance by 35%.`})); setFormData(prev=>({...prev, experiences:enhanced})); setAiLoading(false); setAiResultBox({type:'success', text:lang==='ar'?'تم إعادة صياغة الخبرات بأفعال قوية متوافقة مع ATS!':'Experiences enhanced for ATS!'}); },750); };
-        const handleGenSkills = () => { setAiLoading(true); setTimeout(()=>{ const gen=generateRealisticDataForTitle(formData.jobTitle||'', lang); setFormData(prev=>({...prev, skills:gen.skills})); setAiLoading(false); setAiResultBox({type:'success', text:lang==='ar'?'تم اقتراح مهارات دقيقة ومناسبة!':'Skillset updated successfully!'}); },650); };
-        const handleAudit = () => { setAiLoading(true); setTimeout(()=>{ let score=95, tips=[]; if(!formData.summary||formData.summary.length<40){score-=10; tips.push(lang==='ar'?'الملخص المهني قصير جداً.':'Summary is too short.');} if(formData.experiences.length===0){score-=20; tips.push(lang==='ar'?'أضف خبرة عملية واحدة على الأقل.':'Add work experience.');} if(!formData.skills||formData.skills.length<15){score-=10; tips.push(lang==='ar'?'أضف المزيد من المهارات التخصصية.':'Add more skills.');} setAiLoading(false); setAiResultBox({type:'audit', score, tips: tips.length?tips:[lang==='ar'?'سيرتك الذاتية متكاملة وممتازة!':'Your resume looks great!']}); },800); };
-        const handleInterview = () => { setAiLoading(true); setTimeout(()=>{ const role=formData.jobTitle||'هذا المسمى'; const questions= lang==='ar' ? [`1. كيف تتعامل مع التحديات في مجال ${role}؟`,`2. اذكر إنجازاً قمت فيه بتحسين كفاءة العمل.`,`3. كيف تضمن جودة المخرجات تحت الضغط؟`] : [`1. How do you handle challenges as a ${role}?`,`2. Describe a key achievement.`,`3. How do you meet deadlines?`]; setAiLoading(false); setAiResultBox({type:'interview', questions}); },750); };
-        const handleTitles = () => { setAiLoading(true); setTimeout(()=>{ setFormData(prev=>({...prev, jobTitle: lang==='ar' ? `${prev.jobTitle||'أخصائي'} | أخصائي أول وتطوير أعمال` : `${prev.jobTitle||'Specialist'} | Senior Specialist & Operations Lead`})); setAiLoading(false); setAiResultBox({type:'success', text:lang==='ar'?'تم تطوير وترقية المسمى الوظيفي احترافياً!':'Job titles optimized!'}); },700); };
-        const handleQuantify = () => { setAiLoading(true); setTimeout(()=>{ const list=[{title:lang==='ar'?'رفع كفاءة الإنتاجية بنسبة 40%':'Boosted Efficiency by 40%', details:lang==='ar'?'إعادة هيكلة آلية تنفيذ المهام وتقليل الوقت المستغرق.':'Optimized workflow and execution processes.'},{title:lang==='ar'?'إنجاز أكثر من 10+ مشاريع بنجاح':'Delivered 10+ High-Impact Projects', details:lang==='ar'?'تسليم كافة المشاريع وفق الجداول الزمنية.':'Delivered projects on schedule.'}]; setFormData(prev=>({...prev, achievements:list})); setAiLoading(false); setAiResultBox({type:'success', text:lang==='ar'?'تم إدراج إنجازات كمية معززة بالأرقام!':'Quantified achievements added!'}); },750); };
-
         const currentColor = themeColors[selectedColor] || themeColors.navy;
 
         return (
@@ -381,84 +586,33 @@
                     <div className="flex items-center gap-2">
                         <span className="font-bold text-indigo-600 dark:text-indigo-400">{t.title}</span>
                         <span className="text-xs text-slate-500">{t.subtitle}</span>
+                        <span className="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+                            <i className="fa-solid fa-floppy-disk"></i> {t.autoSaveActive}
+                        </span>
                     </div>
-                    <div className="flex gap-2">
-                        <button onClick={()=>setDarkMode(!darkMode)} className="text-xs bg-slate-200 dark:bg-slate-700 px-2 py-1 rounded">{darkMode?t.lightModeBtn:t.darkModeBtn}</button>
-                        <button onClick={()=>setLang(lang==='ar'?'en':'ar')} className="text-xs bg-slate-200 dark:bg-slate-700 px-2 py-1 rounded">{t.langBtn}</button>
-                        <button onClick={()=>{const el=document.querySelector('#resume-preview'); if(el) html2pdf().set({margin:0, filename:`${formData.fullName||'Resume'}_ATS.pdf`, image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(el).save();}} className="text-xs bg-emerald-600 text-white px-3 py-1 rounded"><i className="fa-solid fa-file-pdf"></i> {t.downloadPdf}</button>
+                    <div>
+                        <button onClick={()=>{const el=document.querySelector('#resume-preview'); if(el) html2pdf().set({margin:0, filename:`${formData.fullName||'Resume'}_ATS.pdf`, image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(el).save();}} className="text-xs bg-emerald-600 text-white px-3 py-1.5 rounded font-bold"><i className="fa-solid fa-file-pdf"></i> {t.downloadPdf}</button>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                    {/* لوحة التحكم */}
+                    {/* لوحة تحكم السيرة الذاتية */}
                     <div className="lg:col-span-5 space-y-2">
                         <div className="flex overflow-x-auto gap-1 pb-1">
-                            {[{id:'ai',label:t.aiTab,icon:'fa-wand-magic-sparkles'},{id:'personal',label:t.personalTab,icon:'fa-user'},{id:'exp',label:t.expTab,icon:'fa-briefcase'},{id:'projects',label:t.projectsTab,icon:'fa-code'},{id:'more',label:t.moreTab,icon:'fa-star'},{id:'extra',label:t.extraTab,icon:'fa-award'},{id:'design',label:t.designTab,icon:'fa-palette'}].map(tab=>(
+                            {[{id:'personal',label:t.personalTab,icon:'fa-user'},{id:'exp',label:t.expTab,icon:'fa-briefcase'},{id:'projects',label:t.projectsTab,icon:'fa-code'},{id:'more',label:t.moreTab,icon:'fa-star'},{id:'extra',label:t.extraTab,icon:'fa-award'},{id:'design',label:t.designTab,icon:'fa-palette'}].map(tab=>(
                                 <button key={tab.id} onClick={()=>setActiveTab(tab.id)} className={`px-3 py-1.5 rounded-lg flex items-center gap-1 whitespace-nowrap text-xs font-bold transition ${activeTab===tab.id?'bg-indigo-600 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}><i className={`fa-solid ${tab.icon}`}></i>{tab.label}</button>
                             ))}
                         </div>
 
-                        {activeTab==='ai' && (
-                            <div className="space-y-2">
-                                <div className="bg-indigo-50 dark:bg-indigo-950/40 p-3 rounded-lg">
-                                    <p className="text-xs font-bold text-indigo-900 dark:text-indigo-300">{t.aiTitle}</p>
-                                    <p className="text-[11px] text-slate-600 dark:text-slate-400">{t.aiSub}</p>
-                                </div>
-                                {aiLoading && <p className="text-xs text-indigo-500 animate-pulse"><i className="fa-solid fa-spinner fa-spin"></i> {lang==='ar'?'جارٍ المعالجة...':'Processing...'}</p>}
-                                {aiResultBox && (
-                                    <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded border text-xs space-y-1">
-                                        {aiResultBox.type==='success' && <p className="text-emerald-700 font-bold"><i className="fa-solid fa-circle-check"></i> {aiResultBox.text}</p>}
-                                        {aiResultBox.type==='text' && <div><p className="font-bold text-indigo-700 dark:text-indigo-300">{aiResultBox.title}</p><textarea readOnly rows="3" className="w-full p-1 border rounded text-xs bg-white dark:bg-slate-800">{aiResultBox.text}</textarea></div>}
-                                        {aiResultBox.type==='audit' && <div><div className="flex justify-between font-bold"><span>{lang==='ar'?'نسبة توافق ATS:':'ATS Score:'}</span><span className="text-indigo-600">{aiResultBox.score}%</span></div><ul className="list-disc pr-3">{aiResultBox.tips.map((tip,i)=><li key={i}>{tip}</li>)}</ul></div>}
-                                        {aiResultBox.type==='interview' && <div><p className="font-bold text-indigo-700 dark:text-indigo-300">{lang==='ar'?'أسئلة مقابلة متوقعة:':'Expected Questions:'}</p>{aiResultBox.questions.map((q,i)=><p key={i} className="font-semibold">{q}</p>)}</div>}
-                                    </div>
-                                )}
-                                <div className="p-2 border dark:border-slate-700 rounded bg-indigo-50/50 dark:bg-indigo-950/20">
-                                    <label className="text-xs font-bold">{t.jobTitle}:</label>
-                                    <input type="text" name="jobTitle" value={formData.jobTitle} onChange={e=>setFormData({...formData, jobTitle:e.target.value})} className="w-full p-1.5 border dark:border-slate-700 rounded text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
-                                </div>
-                                <button onClick={handleGenerateFullResume} disabled={aiLoading} className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-black py-2 rounded-lg">{t.btnFullResume}</button>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <button onClick={handleCoverLetter} className="bg-slate-800 text-white text-xs font-bold p-2 rounded">{t.btnCoverLetter}</button>
-                                    <button onClick={handleTranslate} className="bg-teal-700 text-white text-xs font-bold p-2 rounded">{t.btnTranslate}</button>
-                                </div>
-                                <div className="border p-2 rounded">
-                                    <textarea value={jobDescInput} onChange={e=>setJobDescInput(e.target.value)} placeholder={t.jobDescPlaceholder} rows="2" className="w-full p-1 border rounded text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200"></textarea>
-                                    <button onClick={()=>{if(!jobDescInput) alert('يرجى لصق الوصف الوظيفي أولاً'); else {setAiResultBox({type:'success', text:lang==='ar'?'تم مطابقة السيرة مع الوصف الوظيفي!':'Resume matched with job description!'})}}} className="w-full bg-blue-700 text-white text-xs font-bold py-1 rounded mt-1">{t.btnMatchJob}</button>
-                                </div>
-                                <div className="border p-2 rounded">
-                                    <label className="text-xs font-bold">{t.summaryStyle}</label>
-                                    <select value={summaryStyle} onChange={e=>setSummaryStyle(e.target.value)} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">
-                                        <option value="style1">{t.style1}</option><option value="style2">{t.style2}</option><option value="style3">{t.style3}</option>
-                                    </select>
-                                    <button onClick={handleGenSummary} className="w-full bg-indigo-600 text-white text-xs font-bold py-1 rounded mt-1">{t.btnGenSummary}</button>
-                                </div>
-                                <button onClick={handleEnhanceExp} className="w-full bg-slate-900 text-white text-xs font-bold py-2 rounded">{t.btnEnhanceExp}</button>
-                                <button onClick={handleGenSkills} className="w-full bg-emerald-700 text-white text-xs font-bold py-2 rounded">{t.btnGenSkills}</button>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <button onClick={handleAudit} className="bg-amber-600 text-white text-xs font-bold p-2 rounded">{t.btnCheckResume}</button>
-                                    <button onClick={handleInterview} className="bg-purple-700 text-white text-xs font-bold p-2 rounded">{t.btnInterviewQs}</button>
-                                </div>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <button onClick={handleTitles} className="bg-cyan-700 text-white text-xs font-bold p-2 rounded">{t.btnEnhanceTitles}</button>
-                                    <button onClick={handleQuantify} className="bg-rose-700 text-white text-xs font-bold p-2 rounded">{t.btnQuantifyAch}</button>
-                                </div>
-                                <div className="flex gap-2">
-                                    <button onClick={()=>{if(confirm(lang==='ar'?'مسح كل البيانات؟':'Clear all data?')) setFormData(emptyFormData);}} className="flex-1 bg-rose-600 text-white text-xs font-bold py-1 rounded">{t.btnClearAll}</button>
-                                    <button onClick={()=>setFormData(defaultFormData)} className="flex-1 bg-slate-200 dark:bg-slate-700 text-xs font-bold py-1 rounded">{t.btnRestoreDefault}</button>
-                                </div>
-                            </div>
-                        )}
-
                         {activeTab==='personal' && (
                             <div className="space-y-2">
-                                <input type="text" name="fullName" value={formData.fullName} onChange={e=>setFormData({...formData, fullName:e.target.value})} placeholder={t.fullName} className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
-                                <input type="text" name="jobTitle" value={formData.jobTitle} onChange={e=>setFormData({...formData, jobTitle:e.target.value})} placeholder={t.jobTitle} className="p-2 border rounded-lg text-xs w-full font-bold bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
-                                <div className="grid grid-cols-2 gap-2"><input type="email" name="email" value={formData.email} onChange={e=>setFormData({...formData, email:e.target.value})} placeholder={t.email} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /><input type="text" name="phone" value={formData.phone} onChange={e=>setFormData({...formData, phone:e.target.value})} placeholder={t.phone} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /></div>
-                                <input type="text" name="address" value={formData.address} onChange={e=>setFormData({...formData, address:e.target.value})} placeholder={t.address} className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
-                                <div className="grid grid-cols-3 gap-2"><input type="text" name="linkedin" value={formData.linkedin} onChange={e=>setFormData({...formData, linkedin:e.target.value})} placeholder={t.linkedin} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /><input type="text" name="github" value={formData.github} onChange={e=>setFormData({...formData, github:e.target.value})} placeholder={t.github} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /><input type="text" name="website" value={formData.website} onChange={e=>setFormData({...formData, website:e.target.value})} placeholder={t.website} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /></div>
+                                <input type="text" value={formData.fullName} onChange={e=>setFormData({...formData, fullName:e.target.value})} placeholder={t.fullName} className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
+                                <input type="text" value={formData.jobTitle} onChange={e=>setFormData({...formData, jobTitle:e.target.value})} placeholder={t.jobTitle} className="p-2 border rounded-lg text-xs w-full font-bold bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
+                                <div className="grid grid-cols-2 gap-2"><input type="email" value={formData.email} onChange={e=>setFormData({...formData, email:e.target.value})} placeholder={t.email} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /><input type="text" value={formData.phone} onChange={e=>setFormData({...formData, phone:e.target.value})} placeholder={t.phone} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /></div>
+                                <input type="text" value={formData.address} onChange={e=>setFormData({...formData, address:e.target.value})} placeholder={t.address} className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" />
+                                <div className="grid grid-cols-3 gap-2"><input type="text" value={formData.linkedin} onChange={e=>setFormData({...formData, linkedin:e.target.value})} placeholder={t.linkedin} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /><input type="text" value={formData.github} onChange={e=>setFormData({...formData, github:e.target.value})} placeholder={t.github} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /><input type="text" value={formData.website} onChange={e=>setFormData({...formData, website:e.target.value})} placeholder={t.website} className="p-2 border rounded-lg text-xs bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100" /></div>
                                 <label className="text-xs font-semibold">{t.summary}</label>
-                                <textarea name="summary" value={formData.summary} onChange={e=>setFormData({...formData, summary:e.target.value})} rows="3" className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100"></textarea>
+                                <textarea value={formData.summary} onChange={e=>setFormData({...formData, summary:e.target.value})} rows="3" className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100"></textarea>
                             </div>
                         )}
 
@@ -470,92 +624,29 @@
                                         <input type="text" placeholder={t.role} value={exp.role} onChange={e=>{const arr=[...formData.experiences]; arr[i].role=e.target.value; setFormData({...formData, experiences:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
                                         <div className="grid grid-cols-2 gap-1"><input type="text" placeholder={t.company} value={exp.company} onChange={e=>{const arr=[...formData.experiences]; arr[i].company=e.target.value; setFormData({...formData, experiences:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /><input type="text" placeholder={t.duration} value={exp.duration} onChange={e=>{const arr=[...formData.experiences]; arr[i].duration=e.target.value; setFormData({...formData, experiences:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /></div>
                                         <textarea placeholder={t.description} value={exp.description} onChange={e=>{const arr=[...formData.experiences]; arr[i].description=e.target.value; setFormData({...formData, experiences:arr});}} rows="2" className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100"></textarea>
-                                        <button onClick={()=>setFormData({...formData, experiences:formData.experiences.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
                                     </div>
                                 ))}
-                                <div className="border-t pt-2"><div className="flex justify-between"><h3 className="text-xs font-bold">{t.education}</h3><button onClick={()=>setFormData({...formData, educations:[...formData.educations, {degree:'',institution:'',duration:''}]})} className="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded">{t.addEducation}</button></div>
-                                {formData.educations.map((edu,i)=>(
-                                    <div key={i} className="p-2 border rounded bg-slate-50 dark:bg-slate-900 space-y-1 mt-1">
-                                        <input type="text" placeholder={t.degree} value={edu.degree} onChange={e=>{const arr=[...formData.educations]; arr[i].degree=e.target.value; setFormData({...formData, educations:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <div className="grid grid-cols-2 gap-1"><input type="text" placeholder={t.institution} value={edu.institution} onChange={e=>{const arr=[...formData.educations]; arr[i].institution=e.target.value; setFormData({...formData, educations:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /><input type="text" placeholder={t.duration} value={edu.duration} onChange={e=>{const arr=[...formData.educations]; arr[i].duration=e.target.value; setFormData({...formData, educations:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /></div>
-                                        <button onClick={()=>setFormData({...formData, educations:formData.educations.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
-                                    </div>
-                                ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {activeTab==='projects' && (
-                            <div className="space-y-2">
-                                <div className="flex justify-between"><h3 className="text-xs font-bold">{t.projects}</h3><button onClick={()=>setFormData({...formData, projects:[...formData.projects, {name:'',link:'',description:''}]})} className="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded">{t.addProject}</button></div>
-                                {formData.projects.map((proj,i)=>(
-                                    <div key={i} className="p-2 border rounded bg-slate-50 dark:bg-slate-900 space-y-1">
-                                        <input type="text" placeholder={t.projName} value={proj.name} onChange={e=>{const arr=[...formData.projects]; arr[i].name=e.target.value; setFormData({...formData, projects:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <input type="text" placeholder={t.projLink} value={proj.link} onChange={e=>{const arr=[...formData.projects]; arr[i].link=e.target.value; setFormData({...formData, projects:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <textarea placeholder={t.description} value={proj.description} onChange={e=>{const arr=[...formData.projects]; arr[i].description=e.target.value; setFormData({...formData, projects:arr});}} rows="2" className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100"></textarea>
-                                        <button onClick={()=>setFormData({...formData, projects:formData.projects.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
-                                    </div>
-                                ))}
-                                <div className="border-t pt-2"><div className="flex justify-between"><h3 className="text-xs font-bold">{t.certs}</h3><button onClick={()=>setFormData({...formData, certificates:[...formData.certificates, {name:'',issuer:'',year:''}]})} className="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded">{t.addCert}</button></div>
-                                {formData.certificates.map((cert,i)=>(
-                                    <div key={i} className="p-2 border rounded bg-slate-50 dark:bg-slate-900 space-y-1 mt-1">
-                                        <input type="text" placeholder={t.certName} value={cert.name} onChange={e=>{const arr=[...formData.certificates]; arr[i].name=e.target.value; setFormData({...formData, certificates:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <div className="grid grid-cols-2 gap-1"><input type="text" placeholder={t.issuer} value={cert.issuer} onChange={e=>{const arr=[...formData.certificates]; arr[i].issuer=e.target.value; setFormData({...formData, certificates:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /><input type="text" placeholder="السنة" value={cert.year} onChange={e=>{const arr=[...formData.certificates]; arr[i].year=e.target.value; setFormData({...formData, certificates:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /></div>
-                                        <button onClick={()=>setFormData({...formData, certificates:formData.certificates.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
-                                    </div>
-                                ))}
-                                </div>
                             </div>
                         )}
 
                         {activeTab==='more' && (
                             <div className="space-y-2">
                                 <label className="text-xs font-bold">{t.skills}</label>
-                                <textarea name="skills" value={formData.skills} onChange={e=>setFormData({...formData, skills:e.target.value})} rows="3" className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100"></textarea>
-                                <div className="border-t pt-2"><div className="flex justify-between"><h3 className="text-xs font-bold">{t.languages}</h3><button onClick={()=>setFormData({...formData, languagesList:[...formData.languagesList, {name:'',level:''}]})} className="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded">{t.addLang}</button></div>
-                                {formData.languagesList.map((langItem,i)=>(
-                                    <div key={i} className="p-2 border rounded bg-slate-50 dark:bg-slate-900 space-y-1 mt-1">
-                                        <div className="grid grid-cols-2 gap-1"><input type="text" placeholder={t.langName} value={langItem.name} onChange={e=>{const arr=[...formData.languagesList]; arr[i].name=e.target.value; setFormData({...formData, languagesList:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /><input type="text" placeholder={t.langLevel} value={langItem.level} onChange={e=>{const arr=[...formData.languagesList]; arr[i].level=e.target.value; setFormData({...formData, languagesList:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /></div>
-                                        <button onClick={()=>setFormData({...formData, languagesList:formData.languagesList.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
-                                    </div>
-                                ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {activeTab==='extra' && (
-                            <div className="space-y-2">
-                                <div className="flex justify-between"><h3 className="text-xs font-bold">{t.achievements}</h3><button onClick={()=>setFormData({...formData, achievements:[...formData.achievements, {title:'',details:''}]})} className="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded">{t.addAch}</button></div>
-                                {formData.achievements.map((ach,i)=>(
-                                    <div key={i} className="p-2 border rounded bg-slate-50 dark:bg-slate-900 space-y-1">
-                                        <input type="text" placeholder={t.achTitle} value={ach.title} onChange={e=>{const arr=[...formData.achievements]; arr[i].title=e.target.value; setFormData({...formData, achievements:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <input type="text" placeholder={t.achDesc} value={ach.details} onChange={e=>{const arr=[...formData.achievements]; arr[i].details=e.target.value; setFormData({...formData, achievements:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <button onClick={()=>setFormData({...formData, achievements:formData.achievements.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
-                                    </div>
-                                ))}
-                                <div className="border-t pt-2"><div className="flex justify-between"><h3 className="text-xs font-bold">{t.references}</h3><button onClick={()=>setFormData({...formData, references:[...formData.references, {name:'',role:'',contact:''}]})} className="text-xs bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded">{t.addRef}</button></div>
-                                {formData.references.map((ref,i)=>(
-                                    <div key={i} className="p-2 border rounded bg-slate-50 dark:bg-slate-900 space-y-1 mt-1">
-                                        <input type="text" placeholder={t.refName} value={ref.name} onChange={e=>{const arr=[...formData.references]; arr[i].name=e.target.value; setFormData({...formData, references:arr});}} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" />
-                                        <div className="grid grid-cols-2 gap-1"><input type="text" placeholder={t.refRole} value={ref.role} onChange={e=>{const arr=[...formData.references]; arr[i].role=e.target.value; setFormData({...formData, references:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /><input type="text" placeholder={t.refContact} value={ref.contact} onChange={e=>{const arr=[...formData.references]; arr[i].contact=e.target.value; setFormData({...formData, references:arr});}} className="p-1 border rounded text-xs bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100" /></div>
-                                        <button onClick={()=>setFormData({...formData, references:formData.references.filter((_,idx)=>idx!==i)})} className="text-rose-500 text-xs"><i className="fa-solid fa-trash"></i></button>
-                                    </div>
-                                ))}
-                                </div>
+                                <textarea value={formData.skills} onChange={e=>setFormData({...formData, skills:e.target.value})} rows="3" className="p-2 border rounded-lg text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100"></textarea>
                             </div>
                         )}
 
                         {activeTab==='design' && (
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold">{t.chooseTemplate}</label>
-                                {[['layout1','1. ATS الكلاسيكي'],['layout2','2. ATS العصري'],['layout3','3. ATS الموزع جانباً'],['layout4','4. ATS الأكاديمي'],['layout5','5. ATS المطورين']].map(([id,name])=>(
-                                    <div key={id} onClick={()=>setSelectedLayout(id)} className={`p-2 border rounded cursor-pointer text-xs ${selectedLayout===id?'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/40':'hover:bg-slate-50 dark:hover:bg-slate-900'}`}>{name}</div>
-                                ))}
-                                <label className="text-xs font-bold">{t.chooseColor}</label>
-                                <div className="flex gap-2">{Object.keys(themeColors).map(key=><button key={key} onClick={()=>setSelectedColor(key)} style={{backgroundColor:themeColors[key].primary}} className={`w-6 h-6 rounded-full border-2 ${selectedColor===key?'scale-110 border-slate-900':'border-transparent'}`}></button>)}</div>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <div><label className="text-xs font-bold">{t.chooseFont}</label><select value={selectedFont} onChange={e=>setSelectedFont(e.target.value)} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200"><option value="font-cairo">Cairo</option><option value="font-tajawal">Tajawal</option><option value="font-inter">Inter</option></select></div>
-                                    <div><label className="text-xs font-bold">{t.chooseFontSize}</label><select value={fontSize} onChange={e=>setFontSize(e.target.value)} className="p-1 border rounded text-xs w-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200"><option value="text-[10px]">صغير</option><option value="text-xs">متوسط</option><option value="text-sm">كبير</option></select></div>
+                            <div className="space-y-4 pt-2">
+                                <div>
+                                    <label className="text-xs font-bold block mb-2">{t.chooseColor}</label>
+                                    <div className="flex gap-2">{Object.keys(themeColors).map(key=><button key={key} onClick={()=>setSelectedColor(key)} style={{backgroundColor:themeColors[key].primary}} className={`w-6 h-6 rounded-full border-2 ${selectedColor===key?'scale-110 border-slate-900':'border-transparent'}`}></button>)}</div>
+                                </div>
+                                <hr className="dark:border-slate-700"/>
+                                <div>
+                                    <button onClick={handleResetData} className="text-xs bg-rose-600 text-white px-3 py-1.5 rounded font-bold hover:bg-rose-700 transition">
+                                        <i className="fa-solid fa-rotate-left ml-1"></i> {t.resetData}
+                                    </button>
                                 </div>
                             </div>
                         )}
@@ -564,47 +655,45 @@
                     {/* معاينة A4 */}
                     <div className="lg:col-span-7 overflow-x-auto">
                         <div id="resume-preview" className={`a4-paper bg-white text-slate-800 ${selectedFont} ${fontSize}`}>
-                            {selectedLayout==='layout2' ? (
-                                <div className="p-4 rounded-lg mb-4 text-white" style={{backgroundColor: currentColor.primary}}>
-                                    <h1 className="text-2xl font-black uppercase">{formData.fullName}</h1>
-                                    <p className="text-xs font-semibold">{formData.jobTitle}</p>
-                                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] mt-2">{formData.email && <span><i className="fa-solid fa-envelope"></i> {formData.email}</span>}{formData.phone && <span><i className="fa-solid fa-phone"></i> {formData.phone}</span>}{formData.address && <span><i className="fa-solid fa-location-dot"></i> {formData.address}</span>}</div>
+                            <div className="text-center border-b pb-3 mb-4">
+                                <h1 className="text-2xl font-black uppercase" style={{color: currentColor.primary}}>{formData.fullName}</h1>
+                                <p className="text-xs font-bold text-slate-700">{formData.jobTitle}</p>
+                                <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-[11px] text-slate-600 mt-1.5">
+                                    {formData.email && <span>{formData.email}</span>}
+                                    {formData.phone && <span>| {formData.phone}</span>}
+                                    {formData.address && <span>| {formData.address}</span>}
                                 </div>
-                            ) : (
-                                <div className="text-center border-b pb-3 mb-4">
-                                    <h1 className="text-2xl font-black uppercase" style={{color: currentColor.primary}}>{formData.fullName}</h1>
-                                    <p className="text-xs font-bold text-slate-700">{formData.jobTitle}</p>
-                                    <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-[11px] text-slate-600 mt-1.5">{formData.email && <span>{formData.email}</span>}{formData.phone && <span>| {formData.phone}</span>}{formData.address && <span>| {formData.address}</span>}</div>
-                                </div>
-                            )}
+                            </div>
 
-                            {selectedLayout!=='layout3' ? (
-                                <div className="space-y-3.5">
-                                    {formData.summary && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.summary}</h2><p className="text-slate-700 leading-relaxed">{formData.summary}</p></div>}
-                                    {formData.experiences.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1.5" style={{color: currentColor.primary}}>{t.experience}</h2>{formData.experiences.map((exp,i)=><div key={i} className="mb-2"><div className="flex justify-between font-bold"><span>{exp.role} - <span style={{color: currentColor.primary}}>{exp.company}</span></span><span className="text-slate-500 font-normal">{exp.duration}</span></div><p className="text-slate-600 mt-0.5">{exp.description}</p></div>)}</div>}
-                                    {formData.projects.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1.5" style={{color: currentColor.primary}}>{t.projects}</h2>{formData.projects.map((proj,i)=><div key={i} className="mb-1.5"><div className="flex justify-between font-bold"><span>{proj.name}</span>{proj.link && <span className="text-slate-500 font-normal">{proj.link}</span>}</div><p className="text-slate-600">{proj.description}</p></div>)}</div>}
-                                    {formData.educations.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.education}</h2>{formData.educations.map((edu,i)=><div key={i} className="flex justify-between mb-1"><span><strong>{edu.degree}</strong> - {edu.institution}</span><span className="text-slate-500">{edu.duration}</span></div>)}</div>}
-                                    {formData.skills && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.skills}</h2><p className="text-slate-700">{formData.skills}</p></div>}
-                                    <div className="grid grid-cols-2 gap-4">
-                                        {formData.languagesList.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.languages}</h2>{formData.languagesList.map((langItem,i)=><p key={i} className="text-slate-700"><strong>{langItem.name}:</strong> {langItem.level}</p>)}</div>}
-                                        {formData.certificates.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.certs}</h2>{formData.certificates.map((cert,i)=><p key={i} className="text-slate-700"><strong>{cert.name}</strong> - {cert.issuer} ({cert.year})</p>)}</div>}
+                            <div className="space-y-3.5">
+                                {formData.summary && (
+                                    <div>
+                                        <h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.summary}</h2>
+                                        <p className="text-slate-700 leading-relaxed">{formData.summary}</p>
                                     </div>
-                                    {formData.achievements.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.achievements}</h2>{formData.achievements.map((ach,i)=><p key={i} className="text-slate-700"><strong>{ach.title}:</strong> {ach.details}</p>)}</div>}
-                                </div>
-                            ) : (
-                                <div className="grid grid-cols-12 gap-4">
-                                    <div className="col-span-4 border-r pr-3 space-y-3">
-                                        {formData.skills && <div><h3 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.skills}</h3><p className="text-slate-700">{formData.skills}</p></div>}
-                                        {formData.languagesList.length>0 && <div><h3 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.languages}</h3>{formData.languagesList.map((langItem,i)=><p key={i} className="text-slate-700"><strong>{langItem.name}</strong><br/>{langItem.level}</p>)}</div>}
-                                        {formData.certificates.length>0 && <div><h3 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.certs}</h3>{formData.certificates.map((cert,i)=><p key={i} className="text-slate-700 mb-1"><strong>{cert.name}</strong><br/>{cert.issuer}</p>)}</div>}
+                                )}
+                                {formData.experiences.length > 0 && (
+                                    <div>
+                                        <h2 className="font-bold uppercase border-b pb-0.5 mb-1.5" style={{color: currentColor.primary}}>{t.experience}</h2>
+                                        {formData.experiences.map((exp, idx) => (
+                                            <div key={idx} className="mb-2">
+                                                <div className="flex justify-between font-bold">
+                                                    <span>{exp.role}</span>
+                                                    <span>{exp.duration}</span>
+                                                </div>
+                                                <div className="text-slate-600 italic text-[11px]">{exp.company}</div>
+                                                <p className="text-slate-700 mt-0.5">{exp.description}</p>
+                                            </div>
+                                        ))}
                                     </div>
-                                    <div className="col-span-8 space-y-3">
-                                        {formData.summary && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.summary}</h2><p className="text-slate-700">{formData.summary}</p></div>}
-                                        {formData.experiences.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.experience}</h2>{formData.experiences.map((exp,i)=><div key={i} className="mb-2"><p className="font-bold">{exp.role} - <span style={{color: currentColor.primary}}>{exp.company}</span></p><p className="text-slate-500 font-normal">{exp.duration}</p><p className="text-slate-600 mt-0.5">{exp.description}</p></div>)}</div>}
-                                        {formData.educations.length>0 && <div><h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.education}</h2>{formData.educations.map((edu,i)=><div key={i} className="mb-1"><p className="font-bold">{edu.degree}</p><p className="text-slate-500">{edu.institution} | {edu.duration}</p></div>)}</div>}
+                                )}
+                                {formData.skills && (
+                                    <div>
+                                        <h2 className="font-bold uppercase border-b pb-0.5 mb-1" style={{color: currentColor.primary}}>{t.skills}</h2>
+                                        <p className="text-slate-700">{formData.skills}</p>
                                     </div>
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -612,7 +701,7 @@
         );
     }
 
-    ReactDOM.render(<ATSApp />, document.getElementById('ats-root'));
+    ReactDOM.createRoot(document.getElementById('ats-root')).render(<ATSApp />);
 </script>
 </body>
 </html>
